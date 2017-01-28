@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.ArrayList;
+
 
 @Entity
 public class Usuario {
@@ -16,5 +16,27 @@ public class Usuario {
 	private String nombre;
 	private String apellidos;
 	private String direccion;
+	
+	//Getters y Setters
+	 
+	public String getNombre(){
+		return this.nombre;
+	}
+	
+	public void setNombre(String nombre){
+		this.nombre=nombre;
+	}
+	
+	public String getApellidos(){
+		return this.apellidos;
+	}
+	
+	public void setApellidos(String apellidos){
+		this.apellidos=apellidos;
+	}
+	
+	public String getDireccion(){
+		return this.direccion;
+	}
 	
 }
