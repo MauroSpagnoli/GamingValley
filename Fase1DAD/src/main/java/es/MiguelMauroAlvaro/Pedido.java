@@ -5,8 +5,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-
-import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Pedido {
@@ -17,7 +16,7 @@ public class Pedido {
 	
 	private String fecha;
 	@OneToMany
-	private ArrayList<Videojuego> cesta;
+	private List<Videojuego> cesta;
 	@OneToOne
 	private Usuario comprador;
 	private int coste;
@@ -31,11 +30,11 @@ public class Pedido {
 		this.fecha=fecha;
 	}
 	
-	public ArrayList<Videojuego> getCesta(){
+	public List<Videojuego> getCesta(){
 		return this.cesta;
 	}
 	
-	public void setCesta(ArrayList<Videojuego> cesta){
+	public void setCesta(List<Videojuego> cesta){
 		this.cesta=cesta;
 	}
 	
