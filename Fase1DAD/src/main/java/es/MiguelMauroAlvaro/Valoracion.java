@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Valoracion {
@@ -15,6 +16,9 @@ public class Valoracion {
 	private	int calificacion;
 	private String comentario;
 	private String fecha;
+	@OneToOne
+	private Videojuego videojuegoValorado;
+	@OneToOne 
 	private Usuario autor;
 	
 	//Getter y Setters
@@ -50,6 +54,15 @@ public class Valoracion {
 	public void setAutor(Usuario autor){
 		this.autor=autor;
 	}
+
+	public Videojuego getVideojuegoValorado() {
+		return videojuegoValorado;
+	}
+
+	public void setVideojuegoValorado(Videojuego videojuegoValorado) {
+		this.videojuegoValorado = videojuegoValorado;
+	}
+	
 	
 
 }
