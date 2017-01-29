@@ -38,10 +38,5 @@ public class Noticia {
 	
 	public void setFecha(String fecha){
 		this.fecha=fecha;
-	}
-	
-	
-	
-	
-
+	}	
 }

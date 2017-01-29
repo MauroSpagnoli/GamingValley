@@ -19,7 +19,7 @@ public class Pedido {
 	private List<Videojuego> cesta;
 	@OneToOne
 	private Usuario comprador;
-	private int coste;
+	private double coste;
 	//Getters y Setters
 	
 	public String getFecha(){
@@ -46,11 +46,11 @@ public class Pedido {
 		this.comprador=comprador;
 	}
 
-	public int getCoste() {
+	public double getCoste() {
 		return coste;
 	}
 
-	public void setCoste(int coste) {
+	public void setCoste(double coste) {
 		this.coste = coste;
 	}
 	

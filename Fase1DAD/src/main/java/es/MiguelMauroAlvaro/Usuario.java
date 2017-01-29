@@ -16,9 +16,18 @@ public class Usuario {
 	private String nombre;
 	private String apellidos;
 	private String direccion;
+	private String ciudad;
 	
 	//Getters y Setters
 	 
+	public String getCiudad() {
+		return ciudad;
+	}
+
+	public void setCiudad(String ciudad) {
+		this.ciudad = ciudad;
+	}
+
 	public String getNombre(){
 		return this.nombre;
 	}
@@ -37,6 +46,9 @@ public class Usuario {
 	
 	public String getDireccion(){
 		return this.direccion;
+	}
+	public void setDireccion(String direccion){
+		this.direccion=direccion;
 	}
 	
 }
