@@ -6,6 +6,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import antlr.collections.List;
+
 import java.util.ArrayList;
 
 @Entity
@@ -17,7 +19,7 @@ public class Pedido {
 	
 	private String fecha;
 	@OneToMany
-	private ArrayList<Videojuego> cesta;
+	private ArrayList<Videojuego> cesta = new ArrayList<>();
 	@OneToOne
 	private Usuario comprador;
 	private int coste;
@@ -31,13 +33,7 @@ public class Pedido {
 		this.fecha=fecha;
 	}
 	
-	public ArrayList<Videojuego> getCesta(){
-		return this.cesta;
-	}
-	
-	public void setCesta(ArrayList<Videojuego> cesta){
-		this.cesta=cesta;
-	}
+
 	
 	public Usuario getComprador(){
 		return this.comprador;
