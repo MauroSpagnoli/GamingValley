@@ -5,7 +5,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+<<<<<<< HEAD
 import java.util.List;
+=======
+
+import antlr.collections.List;
+
+import java.util.ArrayList;
+>>>>>>> origin/master
 
 @Entity
 public class Pedido {
@@ -16,7 +23,11 @@ public class Pedido {
 	
 	private String fecha;
 	@OneToMany
+<<<<<<< HEAD
 	private List<Videojuego> cesta;
+=======
+	private ArrayList<Videojuego> cesta = new ArrayList<>();
+>>>>>>> origin/master
 	@OneToOne
 	private Usuario comprador;
 	private int coste;
@@ -30,6 +41,7 @@ public class Pedido {
 		this.fecha=fecha;
 	}
 	
+<<<<<<< HEAD
 	public List<Videojuego> getCesta(){
 		return this.cesta;
 	}
@@ -37,6 +49,9 @@ public class Pedido {
 	public void setCesta(List<Videojuego> cesta){
 		this.cesta=cesta;
 	}
+=======
+
+>>>>>>> origin/master
 	
 	public Usuario getComprador(){
 		return this.comprador;
