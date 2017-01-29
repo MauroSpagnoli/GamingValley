@@ -15,6 +15,12 @@ public class Noticia {
 	private String cuerpo;
 	private String fecha;
 	
+	public Noticia(String titulo, String cuerpo, String fecha){
+		this.titulo = titulo;
+		this.cuerpo = cuerpo;
+		this.fecha = fecha;
+	}
+	
 	//getters y setters
 	public String getTitulo(){
 		return this.titulo;
