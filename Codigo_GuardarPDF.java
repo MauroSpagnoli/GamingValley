@@ -27,7 +27,7 @@ public class PDFCreator {
       PdfWriter.getInstance(documento, archivo);
       documento.open();
       documento.add(new Paragraph("Hola Mundo!"));
-      documento.add(new Paragraph("SoloInformaticaYAlgoMas.blogspot.com"));
+      documento.add(new Paragraph("PDF creado a modo de prueba"));
       documento.close();
     }
     
