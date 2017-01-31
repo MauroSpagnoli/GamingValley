@@ -15,18 +15,19 @@ public class ControladorTablon{
 
 		@Autowired
 		private NoticiaRepository repositorioNoticias;
+		@Autowired
 		private VideojuegoRepository repositorioVideojuegos;
 		
 		@PostConstruct
 		public void init() {
 			repositorioNoticias.save(new Noticia("Nueva PS5", "Se ha diseñado y creado la nueva PS5.", "29/01/2017"));
 			repositorioNoticias.save(new Noticia("Resident Evil 7", "Resident Evil 7 rompe los records de ventas en un día.", "29/01/2017"));
+			repositorioVideojuegos.save(new Videojuego("Resident Evil 7", "Miedo", 60.0f, 50));
+			repositorioVideojuegos.save(new Videojuego("FIFA 17", "Deporte", 60.0f, 50));
 		}
 
-		@GetMapping("/index")
+		@GetMapping("/")
 		public String index(Model model) {
-			model.addAttribute("noticias", repositorioNoticias.findAll());
-			model.addAttribute("videojuegos", repositorioVideojuegos.findAll());
 			return "index";
 		}
 		
@@ -47,5 +48,19 @@ public class ControladorTablon{
 			model.addAttribute("Noticia", noticia);
 			return "ver_noticia";
 		}
+		
+		@RequestMapping("/videojuegos")
+		public String verVideojuegos(Model model){
+			model.addAttribute("videojuegos",repositorioVideojuegos.findAll());
+			return "videojuegos";
+		}
+		
+		@RequestMapping("/videojuego/{id}")
+		public String verVideojuego(Model model, @PathVariable long id){
+			Videojuego videojuego = repositorioVideojuegos.findOne(id);
+			model.addAttribute("Videojuego", videojuego);
+			return "ver_videojuego";
+		}
+
 
 }

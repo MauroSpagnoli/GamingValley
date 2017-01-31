@@ -14,12 +14,12 @@ public class Videojuego {
 	
 	private String titulo;
 	private String descripcion;
-	private double precio;
+	private float precio;
 	private int stock;
 	
 	
 	
-	public Videojuego(String titulo, String descripcion, double precio, int stock) {
+	public Videojuego(String titulo, String descripcion, float precio, int stock) {
 		this.titulo = titulo;
 		this.descripcion = descripcion;
 		this.precio = precio;
@@ -47,12 +47,12 @@ public class Videojuego {
 		this.descripcion=descripcion;
 	}
 	
-	public double getPrecio(){
+	public float getPrecio(){
 		return this.precio;
 	}
 	
-	public void setPrecio(double precio){
-		this.precio=precio;
+	public void setPrecio(float precio){
+		this.precio=precio; 
 	}
 	
 	public int getStock(){
@@ -62,6 +62,12 @@ public class Videojuego {
 	public void setStock(int stock){
 		this.stock=stock;
 	}
+	
+	@Override
+	public String toString() {
+		return titulo + ": " + precio;
+	}
+	
 	
 			
 }

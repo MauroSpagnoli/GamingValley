@@ -1,9 +1,10 @@
 <html>
 <body>
-	<h1>Tablon Noticias</h1>
+	<ul>
 	{{#videojuegos}}
-	<a href="ver_videojuego/{{id}}"> {{videojuego.titulo}} </a><br>
-	{{/videojuegos}}    
-	
+		<li><a href="/videojuego/{{id}}">{{.}}</a></li>
+	{{/videojuegos}}
+	</ul> 	
+
 </body>
 </html>
