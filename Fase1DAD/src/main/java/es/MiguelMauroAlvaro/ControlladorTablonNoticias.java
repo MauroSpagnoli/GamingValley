@@ -21,7 +21,7 @@ public class ControlladorTablonNoticias {
 		}
 		
 		
-		@RequestMapping("/noticias/" , method = RequestMethod.GET)
+		@RequestMapping("/noticias/")
 		public String tablon(Model model, Pageable page) {
 			model.addAttribute("noticias", repositorioNoticias.findAll(page));
 			return "noticias";
