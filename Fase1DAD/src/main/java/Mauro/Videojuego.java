@@ -112,6 +112,9 @@ public class Videojuego {
 			return titulo + " no se encuentra disponible para la venta actualmente.";
 		}
 	}
+	public String getEstaDisponible() {
+		return estaDisponible;
+	}
 					
 
 	
