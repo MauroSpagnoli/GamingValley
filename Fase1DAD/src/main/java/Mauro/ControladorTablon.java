@@ -84,9 +84,9 @@ public class ControladorTablon{
 		}
 		
 		@PostMapping("/agregar_videojuego/nuevo")
-		public String nuevoJuego(Model model, @RequestBody String titulo,@RequestBody String descripcion,@RequestBody int stock,@RequestBody float precio) {
+		public String nuevoJuego(Model model,Videojuego videojuego) {
 
-			repositorioVideojuegos.save(new Videojuego(titulo,descripcion,precio,stock));
+			repositorioVideojuegos.save(videojuego);
 
 			return "videojuego_guardado";
 
