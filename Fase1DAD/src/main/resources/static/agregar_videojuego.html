@@ -1,23 +1,16 @@
 <!DOCTYPE html>
 <html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+</head>
 <body>
-
-<form action="agregar_videojuego/nuevo" method="post">
-<a>Titulo </a><input type="text" id="titulo"/>
-<br>
-<br>
-<a>Descripcion </a><textarea id="descripcion" rows=5 cols=40></textarea>
-<br>
-<br>	
-<a>Stock </a><input type="number" id="stock"/>
-<br>
-<br>	
-<a>Precio </a><input type="number" id="precio"/>	
-<br>
-<br>
-<input type="submit" value="Crear"/>
+<form action="/videojuegos/agregar_videojuego/" method="post">
+	<p>Título:</p><input type="text" name="titulo"/>
+	<p>Descripción:</p><textarea name="descripcion" rows=5 cols=40></textarea>	
+	<p>Stock:</p><input type="number" name="stock"/>	
+	<p>Precio:</p><input type="number" name="precio"/>
+	<br><br>
+	<input type="submit" value="Crear"/>
 </form>
-	
-
 </body>
 </html>

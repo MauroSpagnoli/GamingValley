@@ -16,20 +16,21 @@ public class Videojuego {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	
+	private int stock;
 	private String titulo;
 	private String descripcion;
 	private float precio;
-	private int stock;
+
 	private boolean disponible;
 	private String estaDisponible;
 	@OneToMany
 	private List<Valoracion> valoraciones= new ArrayList<>();
 		
-	public Videojuego(String titulo, String descripcion, float precio, int stock) {
+	public Videojuego(String titulo, String descripcion, int stock, float precio) {
+		this.stock = stock;
 		this.titulo = titulo;
 		this.descripcion = descripcion;
 		this.precio = precio;
-		this.stock = stock;
 		if(this.stock > 0){
 			this.disponible = true;
 		}else{
@@ -38,7 +39,7 @@ public class Videojuego {
 		this.setEstaDisponible();
 	}
 	public Videojuego(){
-		
+		this.setEstaDisponible();
 	}
 
 	// Getters y Setters
@@ -51,9 +52,10 @@ public class Videojuego {
 		if(this.disponible){
 			this.estaDisponible="Disponible para la compra.";
 		}else{
-			this.estaDisponible="No se encuntra disponible para la venta.";
+			this.estaDisponible="No se encuentra disponible para la venta.";
 		}
 	}
+	
 	public void setTitulo(String titulo){
 		this.titulo=titulo;		
 	}

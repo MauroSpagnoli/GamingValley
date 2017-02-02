@@ -26,10 +26,10 @@ public class ControladorTablon{
 		
 		@PostConstruct
 		public void init() {
-			repositorioNoticias.save(new Noticia("Nueva PS5", "Se ha diseñado y creado la nueva PS5.", "29/01/2017"));
-			repositorioNoticias.save(new Noticia("Resident Evil 7", "Resident Evil 7 rompe los records de ventas en un día.", "29/01/2017"));
-			//Videojuego ResidentEvil7 = new Videojuego("Resident Evil 7", "Miedo", 60.0f, 50);
-			Videojuego FIFA17 = new Videojuego("FIFA 17", "Deporte", 60.0f, 60);
+			repositorioNoticias.save(new Noticia("Nueva PS5", "2017-01-29", "Se ha diseñado y creado la nueva PS5."));
+			repositorioNoticias.save(new Noticia("Resident Evil 7", "2017-01-29", "Resident Evil 7 rompe los records de ventas en un día."));
+			Videojuego ResidentEvil7 = new Videojuego("Resident Evil 7", "Miedo", 60, 50.0f);
+			Videojuego FIFA17 = new Videojuego("FIFA 17", "Deporte", 60, 60.0f);
 			Usuario usuarioMauro = new Usuario("Mauro","Spagnoli","C/Alcalde de Mostoles 33","Mostoles");
 			Usuario usuarioMiguel= new Usuario("Miguel","Robledo","C/Alcalde de Mostoles 33","Mostoles");
 			repositorioUsuarios.save(usuarioMauro);
@@ -42,10 +42,9 @@ public class ControladorTablon{
 			//ResidentEvil7.getValoraciones().add(valoracion2);
 			FIFA17.getValoraciones().add(valoracion1);
 			FIFA17.getValoraciones().add(valoracion2);
-			//repositorioVideojuegos.save(ResidentEvil7);
+			repositorioVideojuegos.save(ResidentEvil7);
 			repositorioVideojuegos.save(FIFA17);	
 		}
-
 				
 		@RequestMapping("/noticias")
 		public String tablon(Model model) {
@@ -79,8 +78,6 @@ public class ControladorTablon{
 			Valoracion valoracion = videojuego.getValoraciones().get(id2);
 			model.addAttribute("Valoracion",valoracion);
 			return "ver_valoracion";
-			
-			
 		}
 		
 		@PostMapping("/noticias/nueva_noticia")
@@ -89,13 +86,10 @@ public class ControladorTablon{
 			return "noticia_guardada";
 		}
 		
-		@PostMapping("/agregar_videojuego/nuevo")
-		public String nuevoJuego(Model model,Videojuego videojuego) {
-
+		@PostMapping("/videojuegos/agregar_videojuego")
+		public String nuevoJuego(Model model, Videojuego videojuego) {
 			repositorioVideojuegos.save(videojuego);
-
 			return "videojuego_guardado";
-
 		}
 
 
