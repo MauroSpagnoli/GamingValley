@@ -1,6 +1,7 @@
 package Mauro;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -21,8 +22,8 @@ public class Videojuego {
 	private String descripcion;
 	private float precio;
 
-	private boolean disponible;
-	private String estaDisponible;
+//	private boolean disponible;
+// 	private String estaDisponible;
 	@OneToMany
 	private List<Valoracion> valoraciones= new ArrayList<>();
 		
@@ -31,15 +32,17 @@ public class Videojuego {
 		this.titulo = titulo;
 		this.descripcion = descripcion;
 		this.precio = precio;
-		if(this.stock > 0){
-			this.disponible = true;
+		/*if(this.stock > 0){
+			this.estaDisponible="Disponible para la compra.";
 		}else{
-			this.disponible = false;
-		}
-		this.setEstaDisponible();
+			this.estaDisponible="No se encuentra disponible para la venta.";
+		}*/
 	}
 	public Videojuego(){
-		this.setEstaDisponible();
+		/*this.estaDisponible ="No disponible para la compra";
+		if (this.stock > 0){
+			this.estaDisponible ="Disponible para la compra";
+		}*/
 	}
 
 	// Getters y Setters
@@ -49,11 +52,7 @@ public class Videojuego {
 	}
 	
 	public void setEstaDisponible() {
-		if(this.disponible){
-			this.estaDisponible="Disponible para la compra.";
-		}else{
-			this.estaDisponible="No se encuentra disponible para la venta.";
-		}
+
 	}
 	
 	public void setTitulo(String titulo){
@@ -88,13 +87,13 @@ public class Videojuego {
 		return this.id;
 	}
 	
-	public boolean isDisponible() {
+	/*public boolean isDisponible() {
 		return disponible;
-	}
+	}*/
 	
-	public void setDisponible(boolean disponible) {
+	/*public void setDisponible(boolean disponible) {
 		this.disponible = disponible;
-	}
+	}*/
 	
 	public List<Valoracion> getValoraciones() {
 		return valoraciones;
@@ -106,7 +105,7 @@ public class Videojuego {
 	
 	@Override
 	public String toString() {
-		if (this.disponible=true){
+		if (this.stock>0){
 			return titulo + " se encuentra disponible para la venta.";
 		}else{
 			return titulo + " no se encuentra disponible para la venta actualmente.";
