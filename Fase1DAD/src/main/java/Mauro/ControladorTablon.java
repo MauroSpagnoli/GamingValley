@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 @Controller
@@ -79,6 +81,15 @@ public class ControladorTablon{
 			return "ver_valoracion";
 			
 			
+		}
+		
+		@PostMapping("/agregar_videojuego/nuevo")
+		public String nuevoJuego(Model model, @RequestBody String titulo,@RequestBody String descripcion,@RequestBody int stock,@RequestBody float precio) {
+
+			repositorioVideojuegos.save(new Videojuego(titulo,descripcion,precio,stock));
+
+			return "videojuego_guardado";
+
 		}
 
 
