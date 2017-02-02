@@ -12,13 +12,14 @@ public class Noticia {
 	private long id;
 	
 	private String titulo;
-	private String cuerpo;
 	private String fecha;
+	private String cuerpo;
+
 	
-	public Noticia(String titulo, String cuerpo, String fecha){
+	public Noticia(String titulo, String fecha, String cuerpo){
 		this.titulo = titulo;
-		this.cuerpo = cuerpo;
 		this.fecha = fecha;
+		this.cuerpo = cuerpo;
 	}
 	
 	public Noticia(){
@@ -52,7 +53,7 @@ public class Noticia {
 
 	@Override
 	public String toString() {
-		return titulo + ": " + cuerpo;
+		return fecha + " -- " + titulo;
 	}	
 	
 	

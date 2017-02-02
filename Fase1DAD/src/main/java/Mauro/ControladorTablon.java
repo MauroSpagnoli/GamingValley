@@ -83,6 +83,12 @@ public class ControladorTablon{
 			
 		}
 		
+		@PostMapping("/noticias/nueva_noticia")
+		public String agregarNoticia(Model model,Noticia noticia) {
+			repositorioNoticias.save(noticia);
+			return "noticia_guardada";
+		}
+		
 		@PostMapping("/agregar_videojuego/nuevo")
 		public String nuevoJuego(Model model,Videojuego videojuego) {
 
