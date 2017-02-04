@@ -80,6 +80,11 @@ public class ControladorTablon{
 			repositorioNoticias.save(noticia);
 			return "noticia_guardada";
 		}
+		@PostMapping("/videojuego/{id}/agregar_valoracion/")
+		public String agregarValoracion(Model model, @PathVariable long id, Valoracion valoracion){
+			repositorioValoraciones.save(valoracion);
+			return "valoracion_guardada";
+		}
 		
 		@PostMapping("/videojuegos/agregar_videojuego")
 		public String nuevoJuego(Model model, Videojuego videojuego) {

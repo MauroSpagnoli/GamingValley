@@ -5,7 +5,7 @@
 <body>
 	<ul>
 	{{#videojuegos}}
-		<li><a href="/videojuego/{{id}}">{{.}}</a></li>
+		<li><a href="/videojuego/{{id}}">{{this.titulo}}</a></li>
 	{{/videojuegos}}
 	</ul>
 	<a href="agregar_videojuego.html">Agregar videojuego a la tienda</a>

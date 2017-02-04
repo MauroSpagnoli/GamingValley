@@ -8,7 +8,7 @@
 	<p>Precio: {{Videojuego.precio}}</p>
 	<p>Disponibilidad: {{Videojuego}} </p>
 	{{#Videojuego.valoraciones}}
-		<li><a href="/videojuego/{{Videojuego.id}}/ver_valoracion/{{-index}}">{{.}}</a></li>
+		<li><a href="/videojuego/{{Videojuego.id}}/ver_valoracion/{{-index}}">{{this.comentario}}</a></li>
 	{{/Videojuego.valoraciones}}
 	<a href="/videojuegos">Volver al tablón de videojuegos</a>
 	</form>
