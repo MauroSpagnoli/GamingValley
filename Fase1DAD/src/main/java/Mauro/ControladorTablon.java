@@ -80,9 +80,11 @@ public class ControladorTablon{
 			repositorioNoticias.save(noticia);
 			return "noticia_guardada";
 		}
-		@PostMapping("videojuego{{id}}/nueva_valoracion")
-		public String agregarValoracion(Model model, @PathVariable long id, Valoracion valoracion, Usuario usuario){
-			Usuario usuarioEncontrado = repositorioUsuarios.findOne(usuario.getId());
+		@PostMapping("videojuego/{id}/nueva_valoracion")
+		public String agregarValoracion(Model model, @PathVariable long id, Valoracion valoracion){
+			Videojuego videojuego = this.repositorioVideojuegos.findOne(id);
+			model.addAttribute("id",id);
+			Usuario usuarioEncontrado = repositorioUsuarios.getOne(1L);
 			valoracion.setAutor(usuarioEncontrado);
 			repositorioValoraciones.save(valoracion);
 			return "valoracion_guardada";
