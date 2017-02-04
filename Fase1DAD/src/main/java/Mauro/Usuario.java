@@ -33,7 +33,9 @@ public class Usuario {
 	}
 
 
-
+	public long getId(){
+		return this.id;
+	}
 	//Getters y Setters
 	 
 	public String getCiudad() {
