@@ -4,22 +4,17 @@
 </head>
 <body>
 	<form action="noticias/nueva_noticia" method="post">
-		<p>Calificacion: </p>
-		<input type="number" name='calificacion'/>
-		<p>Comentario:</p>
-		<textarea name='comentario' rows=10 cols=80></textarea>
-		<p>Fecha:</p>
+		<p>Titulo: </p>
+		<input type="text" name='titulo'/>
+		<p>Fecha: </p>
 		<input type='date' name='fecha'/>
-		<>
+		<p>Comentario: </p>
+		<textarea name='comentario' rows=10 cols=80></textarea>
 		<br>
 		<br>
 		<input type='submit' value='Enviar'/>
 	</form>
 </body>
 </html>
-	private	int calificacion;
-	private String comentario;
-	private String fecha;
-	@OneToOne 
-	private Usuario autor;
+
 	

@@ -103,6 +103,10 @@ public class Videojuego {
 		this.valoraciones = valoraciones;
 	}
 	
+	public void agregarValoracion (Valoracion valoracion){
+		this.valoraciones.add(valoracion);
+	}
+	
 	@Override
 	public String toString() {
 		if (this.stock>0){

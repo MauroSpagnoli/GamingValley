@@ -1,5 +1,7 @@
 package Mauro;
 
+import static org.hamcrest.CoreMatchers.nullValue;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
