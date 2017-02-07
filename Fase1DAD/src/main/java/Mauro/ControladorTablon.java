@@ -3,6 +3,7 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -80,10 +81,19 @@ public class ControladorTablon{
 			repositorioNoticias.save(noticia);
 			return "noticia_guardada";
 		}
-		@PostMapping("videojuego/{id}/nueva_valoracion")
+		
+		@GetMapping("videojuego/{id}/mostrar_form_valoracion")
 		public String agregarValoracion(Model model, @PathVariable long id, Valoracion valoracion){
 			model.addAttribute("id",id);
-			repositorioValoraciones.save(valoracion);
+            repositorioValoraciones.save(valoracion);
+            Videojuego videojuego = repositorioVideojuegos.findOne(id);
+            videojuego.agregarValoracion(valoracion);
+            repositorioVideojuegos.save(videojuego);
+			return "form_valoracion";
+		}
+		
+		@GetMapping("/videojuego/{id}/valoracion_guardada")
+		public String valoracionGuardada(){
 			return "valoracion_guardada";
 		}
 		

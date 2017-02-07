@@ -6,9 +6,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import org.hibernate.validator.constraints.Email;
-
+import org.springframework.web.context.annotation.SessionScope;
 
 @Entity
+@SessionScope
 public class Usuario {
 
 	@Id
