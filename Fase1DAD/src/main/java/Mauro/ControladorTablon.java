@@ -1,6 +1,7 @@
 package Mauro;
 import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +22,7 @@ public class ControladorTablon{
 		private UsuarioRepository repositorioUsuarios;
 		
 		@PostConstruct
+		@Bean
 		public void init() {
 			repositorioNoticias.save(new Noticia("Nueva PS5", "2017-01-29", "Se ha diseñado y creado la nueva PS5."));
 			repositorioNoticias.save(new Noticia("Resident Evil 7", "2017-01-29", "Resident Evil 7 rompe los records de ventas en un día."));

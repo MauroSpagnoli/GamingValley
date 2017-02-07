@@ -96,6 +96,23 @@ public class Usuario {
 		this.email = email;
 	}
 	
+	@Override
+	public String toString() {
+		return "Usuario [id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", password=" + password
+				+ ", email=" + email + ", direccion=" + direccion + ", ciudad=" + ciudad + "]";
+	}
+
+
+	//Set para meter info usuario
+	public void setInfoUser(String nombre, String apellidos, String password, String email, String direccion, String ciudad){
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+		this.password = password;
+		this.email = email;
+		this.direccion = direccion;
+		this.ciudad = ciudad;
+	}
+	
 	
 	
 }
