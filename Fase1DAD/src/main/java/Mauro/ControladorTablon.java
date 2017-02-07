@@ -71,7 +71,7 @@ public class ControladorTablon{
 		@RequestMapping("/videojuego/{id1}/ver_valoracion/{id2}")
 		public String verValoracion(Model model, @PathVariable long id1, @PathVariable int id2){
 			Videojuego videojuego = repositorioVideojuegos.findOne(id1);
-			Valoracion valoracion = videojuego.getValoraciones().get(id2);
+			Valoracion valoracion = videojuego.getValoraciones().get(id2-1);
 			model.addAttribute("Valoracion",valoracion);
 			return "ver_valoracion";
 		}
