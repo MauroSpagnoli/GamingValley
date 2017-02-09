@@ -25,6 +25,7 @@ public class ControladorPedidos {
 		repositorioVideojuegos.save(TheLastOfUs);
 		repositorioVideojuegos.save(F12017);
 		Pedido pedido1 = new Pedido ("2017-02-09",usuarioAlvaro);
+		repositorioPedidos.save(pedido1);
 	}
 	
 	@RequestMapping("/pedidos")
