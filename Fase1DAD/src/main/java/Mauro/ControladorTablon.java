@@ -104,7 +104,7 @@ public class ControladorTablon{
 			return "form_valoracion";
 		}
 		
-		@GetMapping("/videojuegos/agregar_videojuego")
+		@PostMapping("/videojuegos/agregar_videojuego")
 		public String nuevoJuego(Model model, Videojuego videojuego) {
 			repositorioVideojuegos.save(videojuego);
 			return "videojuego_guardado";
