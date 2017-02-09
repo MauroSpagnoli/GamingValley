@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -24,11 +23,15 @@ public class ControladorUsuario {
 		return "login_usuario";
 	}
 	
-	@PostMapping("/registro")
-	public String registroUsuario(Usuario usuario, HttpSession sesion){
+	@GetMapping("/registro")
+	public String registroUsuario(Model model,Usuario usuario, HttpSession sesion){
 		usuarioLogeado=usuario;
 		repositorioUsuarios.save(usuarioLogeado);
-		return ("registro_correcto.html");
+		return "registro_correcto.html";
+	}
+	@GetMapping("/form_registro")
+	public String mostrarForm(Model model){
+		return "registro_usuario.html";
 	}
 	
 	//Método de prueba para ver si se registran los usuarios
