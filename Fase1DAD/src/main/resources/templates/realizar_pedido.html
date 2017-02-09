@@ -1,10 +1,14 @@
-<!DOCTYPE html>
 <html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+</head>
 <body>
-
-<form action="/realizar_pedido/videojuegos/">
-<input type="checkbox" name="vehicle" value="Car">I have a car 
+<form action="/realizar_pedido">
+	{{#videojuegos}}
+	<li><input type="checkbox" name="videojuego" value="videojuego">{{this.titulo}}</li>
+	{{/videojuegos}}
+	<br>
+	<a href="/pedido_correcto">Confirmar pedido</a>
 </form>
-
 </body>
 </html>

@@ -31,7 +31,7 @@ public class Pedido {
 	public Pedido(String fecha, Usuario comprador){
 		this.fecha = fecha;
 		this.comprador = comprador;
-		this.coste = this.costeTotalPedido();
+		this.costeTotalPedido();;
 	}
 	//Getters y Setters
 	
@@ -67,12 +67,12 @@ public class Pedido {
 		this.coste = coste;
 	}
 	
-	public double costeTotalPedido(){
-		double coste=0;
+	public void costeTotalPedido(){
+		double aux=0;
 		for (Videojuego videojuego: this.cesta){
-			coste = videojuego.getPrecio() + coste;
+			aux = videojuego.getPrecio() + aux;
 		}
-		return coste;
+		this.coste = aux;
 	}
 	
 	public void agregarVideojuego(Videojuego v){
@@ -81,7 +81,7 @@ public class Pedido {
 
 	@Override
 	public String toString() {
-		return "Pedido " + id + " [fecha=" + fecha + ", comprador=" + comprador + ", coste=" + coste + "]";
+		return "Pedido " + id + " -- " + fecha + ", " + comprador.getNombre() + ", " + coste;
 	}
 	
 	

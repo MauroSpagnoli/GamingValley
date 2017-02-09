@@ -26,6 +26,8 @@ public class ControladorPedidos {
 		repositorioVideojuegos.save(TheLastOfUs);
 		repositorioVideojuegos.save(F12017);
 		Pedido pedido1 = new Pedido ("2017-02-09",usuarioAlvaro);
+		pedido1.agregarVideojuego(F12017);
+		pedido1.costeTotalPedido();
 		repositorioPedidos.save(pedido1);
 	}
 	
@@ -47,8 +49,5 @@ public class ControladorPedidos {
 		model.addAttribute("pedido", pedido);
 		return "ver_pedido";
 	}
-
-	
-	
 
 }
