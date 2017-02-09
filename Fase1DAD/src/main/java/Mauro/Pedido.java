@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -17,10 +19,20 @@ public class Pedido {
 	
 	private String fecha;
 	@OneToMany
-	private List<Videojuego> cesta;
+	private List<Videojuego> cesta = new ArrayList<>();
 	@OneToOne
 	private Usuario comprador;
 	private double coste;
+	
+	public Pedido(){
+		
+	}
+	
+	public Pedido(String fecha, Usuario comprador){
+		this.fecha = fecha;
+		this.comprador = comprador;
+		this.coste = this.costeTotalPedido();
+	}
 	//Getters y Setters
 	
 	public String getFecha(){
@@ -55,5 +67,16 @@ public class Pedido {
 		this.coste = coste;
 	}
 	
+	public double costeTotalPedido(){
+		double coste=0;
+		for (Videojuego videojuego: this.cesta){
+			coste = videojuego.getPrecio() + coste;
+		}
+		return coste;
+	}
+	
+	public void agregarVideojuego(Videojuego v){
+		this.cesta.add(v);
+	}
 
 }
