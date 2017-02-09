@@ -15,11 +15,14 @@ public class ControladorUsuario {
 	
 	@Autowired
 	private Usuario usuarioLogeado;
+	@Autowired
 	private UsuarioRepository repositorioUsuarios;
 	
-	@PostMapping("/login_usuario")
-	public String inicioSesion(Model model, HttpSession sesion){
-		return "login_correcto";
+	@GetMapping("/login_usuario")
+	public String inicioSesion(Model model, HttpSession sesion, Usuario usuario){
+		this.usuarioLogeado = usuario;
+		//this.repositorioUsuarios.findbynombreandpassword();
+		return "login_usuario";
 	}
 	
 	@GetMapping("/registro")

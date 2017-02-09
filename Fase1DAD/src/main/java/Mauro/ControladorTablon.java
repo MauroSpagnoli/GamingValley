@@ -6,7 +6,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+/*Cuando se necesite un formulario con post y que sea una plantilla se ha de 
+hacer lo mismo que en los métodos de agregar valoracion */
 
 @Controller
 public class ControladorTablon{
@@ -82,22 +86,25 @@ public class ControladorTablon{
 			return "noticia_guardada";
 		}
 		
-		@GetMapping("videojuego/{id}/mostrar_form_valoracion")
-		public String agregarValoracion(Model model, @PathVariable long id, Valoracion valoracion){
+		@PostMapping("/videojuego/{id}/nueva_form_valoracion")
+		public String agregarValoracion(Model model,@PathVariable long id, Valoracion valoracion){
 			model.addAttribute("id",id);
-            repositorioValoraciones.save(valoracion);
-            Videojuego videojuego = repositorioVideojuegos.findOne(id);
-            videojuego.agregarValoracion(valoracion);
-            repositorioVideojuegos.save(videojuego);
+			Videojuego videojuego = this.repositorioVideojuegos.findOne(id);
+			Usuario usuario = this.repositorioUsuarios.getOne(1L);
+			valoracion.setAutor(usuario);
+			videojuego.agregarValoracion(valoracion);
+			repositorioValoraciones.save(valoracion);
+			repositorioVideojuegos.save(videojuego);
+			return "valoracion_guardada";	
+		}
+		
+		@GetMapping("/videojuego/{id}/form_valoracion")
+		public String mostrarForm(Model model, @PathVariable long id){
+			model.addAttribute("id",id);
 			return "form_valoracion";
 		}
 		
-		@GetMapping("/videojuego/{id}/valoracion_guardada")
-		public String valoracionGuardada(){
-			return "valoracion_guardada";
-		}
-		
-		@PostMapping("/videojuegos/agregar_videojuego")
+		@GetMapping("/videojuegos/agregar_videojuego")
 		public String nuevoJuego(Model model, Videojuego videojuego) {
 			repositorioVideojuegos.save(videojuego);
 			return "videojuego_guardado";
