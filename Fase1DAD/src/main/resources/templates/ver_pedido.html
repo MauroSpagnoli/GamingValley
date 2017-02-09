@@ -6,7 +6,7 @@
 	<p>ID: {{pedido.id}}</p>
 	<p>Fecha: {{pedido.fecha}}</p>
 	{{#pedido.cesta}}
-		<li><a href="/videojuego/{{-index}}">{{this.titulo}}</a></li>
+		<li><a href="/videojuego/{{this.id}}">{{this.titulo}}</a></li>
 	{{/pedido.cesta}}
 	<br>
 	<a href="/pedidos">Volver al tablón de pedidos</a>

@@ -110,8 +110,5 @@ public class Usuario {
 		this.email = email;
 		this.direccion = direccion;
 		this.ciudad = ciudad;
-	}
-	
-	
-	
+	}	
 }

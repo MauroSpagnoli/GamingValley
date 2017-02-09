@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ControladorUsuario {
@@ -25,11 +24,11 @@ public class ControladorUsuario {
 		return "login_usuario";
 	}
 	
-	@GetMapping("/registro")
-	public String registroUsuario(@RequestParam String nombre, @RequestParam String apellidos, @RequestParam String password, @RequestParam String email, @RequestParam String direccion, @RequestParam String ciudad, HttpSession sesion){
-		usuarioLogeado.setInfoUser(nombre, apellidos, password, email, direccion, ciudad);
+	@PostMapping("/registro")
+	public String registroUsuario(Usuario usuario, HttpSession sesion){
+		usuarioLogeado=usuario;
 		repositorioUsuarios.save(usuarioLogeado);
-		return ("registro_correcto");
+		return ("registro_correcto.html");
 	}
 	
 	//Método de prueba para ver si se registran los usuarios
