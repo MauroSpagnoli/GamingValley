@@ -79,4 +79,11 @@ public class Pedido {
 		this.cesta.add(v);
 	}
 
+	@Override
+	public String toString() {
+		return "Pedido " + id + " [fecha=" + fecha + ", comprador=" + comprador + ", coste=" + coste + "]";
+	}
+	
+	
+
 }

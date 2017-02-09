@@ -5,6 +5,7 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -33,6 +34,20 @@ public class ControladorPedidos {
 		model.addAttribute("pedidos", repositorioPedidos.findAll());
 		return "pedidos";
 	}
+	
+	@RequestMapping("/realizar_pedido")
+	public String verVideojuegos(Model model){
+		model.addAttribute("videojuegos",repositorioVideojuegos.findAll());
+		return "realizar_pedido";
+	}
+	
+	@RequestMapping("/pedido/{id}")
+	public String verVideojuego(Model model, @PathVariable long id){
+		Pedido pedido = repositorioPedidos.findOne(id);
+		model.addAttribute("pedido", pedido);
+		return "ver_pedido";
+	}
+
 	
 	
 
