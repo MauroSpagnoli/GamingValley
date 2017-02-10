@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -17,10 +18,15 @@ public class ControladorUsuario {
 	private UsuarioRepository repositorioUsuarios;
 	
 	@GetMapping("/login_usuario")
-	public String inicioSesion(Model model, HttpSession sesion, Usuario usuario){
-		this.usuarioLogeado = usuario;
-		//this.repositorioUsuarios.findbynombreandpassword();
+	public String inicioSesion(Model model, HttpSession sesion){
 		return "login_usuario";
+	}
+	
+	@PostMapping("/logearse")
+	public String logearse(Model model, HttpSession sesion, Usuario usuario){
+		this.usuarioLogeado = usuario;
+		this.repositorioUsuarios.save(usuario);
+		return "login_correcto";
 	}
 	
 	@GetMapping("/registro")
