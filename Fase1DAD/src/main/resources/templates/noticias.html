@@ -1,8 +1,13 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+	<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<link rel="stylesheet" href="css/materialize.css">
 </head>
 <body>
+	<h1>Gaming Valley</h1>
+	<h3>Noticias</h3>
 	<ul>
 	{{#noticias}}
 		<li><a href="/noticia/{{id}}">{{.}}</a></li>
@@ -10,6 +15,7 @@
 	</ul> 	
 
 	<a href="nueva_noticia.html">Agregar una nueva noticia</a>
+	<br>
 	<br>
 	<a href="/">Volver al menú principal</a>
 </body>
