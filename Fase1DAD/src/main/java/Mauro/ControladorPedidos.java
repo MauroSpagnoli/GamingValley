@@ -5,11 +5,15 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ControladorPedidos {
+	private long contadorPedidos= 0l;
 	@Autowired
 	private PedidoRepository repositorioPedidos;
 	@Autowired
@@ -25,10 +29,26 @@ public class ControladorPedidos {
 		repositorioUsuarios.save(usuarioAlvaro);
 		repositorioVideojuegos.save(TheLastOfUs);
 		repositorioVideojuegos.save(F12017);
-		Pedido pedido1 = new Pedido ("2017-02-09",usuarioAlvaro);
-		pedido1.agregarVideojuego(F12017);
-		pedido1.costeTotalPedido();
-		repositorioPedidos.save(pedido1);
+	}
+	
+	@GetMapping("/nuevo_pedido_actual")
+	public String pedidoActualNuevo() {
+		this.contadorPedidos++;
+		System.out.println(this.contadorPedidos);
+		this.repositorioPedidos.deleteAll();
+		Pedido pedido = new Pedido("2017-02-13",this.repositorioUsuarios.getOne(1L));
+		this.repositorioPedidos.save(pedido);
+		return "pedido_guardado";
+	}
+	
+	@GetMapping("/agregar_videojuego_pedido_actual/{id}")
+	public String agregar_v_pactual(Model model, @PathVariable long id){
+		Pedido pedido = this.repositorioPedidos.getOne(this.contadorPedidos);
+		Videojuego videojuego = this.repositorioVideojuegos.getOne(id);
+		pedido.agregarVideojuego(videojuego);
+		pedido.costeTotalPedido();
+		this.repositorioPedidos.save(pedido);
+		return"videojuego_agregado_pedido";
 	}
 	
 	@RequestMapping("/pedidos")
