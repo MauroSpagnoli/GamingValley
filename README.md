@@ -30,19 +30,19 @@ Nuestra aplicación web se basa en la **venta** de videojuegos y de conocer las 
 
 
 ## Explicacion de las vistas
-- Vista Principal: Desde esta pagina se puede logearse en la pagina, acceder a las noticias, ver la tienda y ver el pedido actual.
+- **Vista Principal**: Desde esta pagina se puede logearse en la pagina, acceder a las noticias, ver la tienda y ver el pedido actual.
 ![alt text](https://github.com/MauroSpagnoli/GamingValley/blob/master/Vistas/inicio.PNG)
 
-- Vista Noticia: Aqui se pueden ver las noticias o agregar una nueva.
+- **Vista Noticia**: Aqui se pueden ver las noticias o agregar una nueva.
 ![alt text] (https://github.com/MauroSpagnoli/GamingValley/blob/master/Vistas/noticias.PNG)
 
-- Vista Tienda: Aqui se pueden ver todos los videojuegos que hay en la tienda, agregar un nuevo videojuego y volver a la pagina principal.
+- **Vista Tienda**: Aqui se pueden ver todos los videojuegos que hay en la tienda, agregar un nuevo videojuego y volver a la pagina principal.
 ![alt text] (https://github.com/MauroSpagnoli/GamingValley/blob/master/Vistas/videojuegos.PNG)
 
-- Vista Login: Desde aqui podemos logearnos en la pagina o si no tenemos cuenta registrarnos.
+- **Vista Login**: Desde aqui podemos logearnos en la pagina o si no tenemos cuenta registrarnos.
 ![alt text] (https://github.com/MauroSpagnoli/GamingValley/blob/master/Vistas/form_login.PNG)
 
-- Vista Pedido: Aqui sale el pedido actual, ademas se puede guardar el pedido actual y volver a la pagina principal.
+- **Vista Pedido**: Aqui sale el pedido actual, ademas se puede guardar el pedido actual y volver a la pagina principal.
 ![alt text] (https://github.com/MauroSpagnoli/GamingValley/blob/master/Vistas/pedidos.PNG)
 
 
