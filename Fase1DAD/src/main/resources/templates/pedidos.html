@@ -6,14 +6,17 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
 </head>
 <body>
-	<ul>
-	{{#pedidos}}
-		<li><a href="/pedido/{{id}}">{{.}}</a></li>
-	{{/pedidos}}
-	</ul> 	
-	
-	<a href="/nuevo_pedido_actual">Agregar un nuevo pedido actual</a>
-	<br>
-	<a href="/">Volver al menú principal</a>
+	<center>
+		<h1>Pedidos</h1>
+		<ul>
+		{{#pedidos}}
+			<li><a href="/pedido/{{id}}">{{.}}</a></li>
+		{{/pedidos}}
+		</ul> 	
+		
+		<a href="/nuevo_pedido_actual">Agregar un nuevo pedido actual</a>
+		<br>
+		<a href="/">Volver al menú principal</a>
+	</center>
 </body>
 </html>

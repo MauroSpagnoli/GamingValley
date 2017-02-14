@@ -6,17 +6,17 @@
 	<link rel="stylesheet" href="css/materialize.css">
 </head>
 <body>
-	<h1>Gaming Valley</h1>
-	<h3>Noticias</h3>
-	<ul>
-	{{#noticias}}
-		<li><a href="/noticia/{{id}}">{{.}}</a></li>
-	{{/noticias}}
-	</ul> 	
-
-	<a href="nueva_noticia.html">Agregar una nueva noticia</a>
-	<br>
-	<br>
-	<a href="/">Volver al menú principal</a>
+	<center>
+		<h1>Noticias</h1>
+		<ul>
+		{{#noticias}}
+			<li><a href="/noticia/{{id}}">{{.}}</a></li>
+		{{/noticias}}
+		</ul> 	
+	
+		<a href="nueva_noticia.html">Agregar una nueva noticia</a>
+		<br>
+		<a href="/">Volver al menú principal</a>
+	</center>
 </body>
 </html>
