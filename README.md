@@ -28,3 +28,7 @@ Nuestra aplicación web se basa en la **venta** de videojuegos y de conocer las 
 - [**Álvaro Hinojal:**](https://github.com/AHinojal) a.hinojal@alumnos.urjc.es
 - [**Miguel Robledo:**](https://github.com/migueljrd) m.robledod@alumnos.urjc.es
 
+
+## Explicacion de las vistas
+- Vista principal: Desde esta pagina se puede logearse en la pagina, consultar las noticias, ver la tienda y ver el pedido actual.
+![alt text](https://github.com/MauroSpagnoli/GamingValley/blob/master/Vistas/inicio.PNG)
