@@ -39,7 +39,7 @@ Nuestra aplicación web se basa en la **venta** de videojuegos y de conocer las 
 - **Vista Tienda**: Aqui se pueden ver todos los videojuegos que hay en la tienda, agregar un nuevo videojuego y volver a la pagina principal.
 ![alt text] (https://github.com/MauroSpagnoli/GamingValley/blob/master/Vistas/videojuegos.PNG)
 
-- **Vista Login**: Desde aqui podemos logearnos en la pagina o si no tenemos cuenta registrarnos.
+- **Vista Login**: Desde aqui se puede logearse en la pagina o si no se tiene cuenta poder registrarse.
 ![alt text] (https://github.com/MauroSpagnoli/GamingValley/blob/master/Vistas/form_login.PNG)
 
 - **Vista Pedido**: Aqui sale el pedido actual, ademas se puede guardar el pedido actual y volver a la pagina principal.
