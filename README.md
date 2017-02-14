@@ -28,8 +28,13 @@ Nuestra aplicación web se basa en la **venta** de videojuegos y de conocer las 
 - [**Álvaro Hinojal:**](https://github.com/AHinojal) a.hinojal@alumnos.urjc.es
 - [**Miguel Robledo:**](https://github.com/migueljrd) m.robledod@alumnos.urjc.es
 
+## Diagrama UML de clases:
+![alt text](https://github.com/MauroSpagnoli/GamingValley/blob/master/GamingValley_UML.png)
 
-## Explicacion de las vistas
+## Diagrama Entidad/Relacion:
+![alt text](https://github.com/MauroSpagnoli/GamingValley/blob/master/ermodel.PNG) 
+
+## Explicación de las vistas
 - **Vista Principal**: Desde esta pagina se puede logearse en la pagina, acceder a las noticias, ver la tienda y ver el pedido actual.
 ![alt text](https://github.com/MauroSpagnoli/GamingValley/blob/master/Vistas/inicio.PNG)
 
@@ -43,6 +48,7 @@ Nuestra aplicación web se basa en la **venta** de videojuegos y de conocer las 
 ![alt text] (https://github.com/MauroSpagnoli/GamingValley/blob/master/Vistas/form_login.PNG)
 
 - **Vista Pedido**: Aqui sale el pedido actual, ademas se puede guardar el pedido actual y volver a la pagina principal.
-![alt text] (https://github.com/MauroSpagnoli/GamingValley/blob/master/Vistas/pedidos.PNG)
+![alt text](https://github.com/MauroSpagnoli/GamingValley/blob/master/Vistas/pedidos.PNG)
 
-
+## Organigrama de navegación:
+![alt text](https://github.com/MauroSpagnoli/GamingValley/blob/master/organigrama.png)
