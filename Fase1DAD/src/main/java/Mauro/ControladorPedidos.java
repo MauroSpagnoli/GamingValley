@@ -43,6 +43,7 @@ public class ControladorPedidos {
 	public String agregar_v_pactual(Model model, @PathVariable long id){
 		Pedido pedido = this.repositorioPedidos.getOne(this.contadorPedidos);
 		Videojuego videojuego = this.repositorioVideojuegos.getOne(id);
+		videojuego.comprarVideojuego();
 		pedido.agregarVideojuego(videojuego);
 		pedido.costeTotalPedido();
 		this.repositorioPedidos.save(pedido);

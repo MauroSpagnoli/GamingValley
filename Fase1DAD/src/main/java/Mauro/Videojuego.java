@@ -54,6 +54,9 @@ public class Videojuego {
 	public void setEstaDisponible() {
 
 	}
+	public void comprarVideojuego(){
+		this.stock--;
+	}
 	
 	public void setTitulo(String titulo){
 		this.titulo=titulo;		
