@@ -32,17 +32,10 @@ public class Videojuego {
 		this.titulo = titulo;
 		this.descripcion = descripcion;
 		this.precio = precio;
-		/*if(this.stock > 0){
-			this.estaDisponible="Disponible para la compra.";
-		}else{
-			this.estaDisponible="No se encuentra disponible para la venta.";
-		}*/
 	}
+	
 	public Videojuego(){
-		/*this.estaDisponible ="No disponible para la compra";
-		if (this.stock > 0){
-			this.estaDisponible ="Disponible para la compra";
-		}*/
+
 	}
 
 	// Getters y Setters

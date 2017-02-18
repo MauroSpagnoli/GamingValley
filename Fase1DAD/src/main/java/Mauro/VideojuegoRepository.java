@@ -7,4 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface VideojuegoRepository extends JpaRepository<Videojuego, Long> {	
 	Page<Videojuego> findByTitulo(String titulo,Pageable page);
 	Page<Videojuego> findByPrecio(String precio,Pageable page);
+	Videojuego findById(long id);
 }

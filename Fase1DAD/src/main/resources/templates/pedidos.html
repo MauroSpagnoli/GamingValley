@@ -11,6 +11,16 @@
 		<ul>
 		{{#pedidos}}
 			<li><a href="/pedido/{{id}}">{{.}}</a></li>
+			<form action ="/cambiar_pedido_actual/{{this.id}}" method="get">
+			<button class="btn waves-effect waves-light" type="submit" name="action">
+    			<i class="material-icons right">Seleccionar pedido</i>
+  			</button>
+			</form>
+			<form action ="/eliminar_pedido/{{this.id}}" method="get">
+			<button class="btn waves-effect waves-light" type="submit" name="action">
+    			<i class="material-icons right">Eliminar pedido</i>
+  			</button>
+			</form>
 		{{/pedidos}}
 		</ul> 	
 		

@@ -17,7 +17,9 @@
 	<br>
 	<a href="/videojuego/{{Videojuego.id}}/form_valoracion">Nueva valoración</a>
 	<br>
-	<a href="/agregar_videojuego_pedido_actual/{{Videojuego.id}}">Agregar videojuego a pedido actual</a>
+	<form action="/agregar_videojuego_pedido_actual/{{Videojuego.id}}" method="post">
+		<input type='submit' value='Agregar videojuego al pedido actual'/>
+	</form>
 	<br>
 	<a href="/videojuegos">Volver al tablón de videojuegos</a>
 	<br>

@@ -1,11 +1,17 @@
 package Mauro;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import org.hibernate.annotations.Cascade;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,22 +23,26 @@ public class Pedido {
 	private long id;
 	
 	private String fecha;
-	@OneToMany
-	private List<Videojuego> cesta = new ArrayList<>();
 	@OneToOne
 	private Usuario comprador;
+	@ManyToMany
+	private List<Videojuego> cesta = new ArrayList<>();
 	private double coste;
 	
 	public Pedido(){
-		
+
 	}
 	
 	public Pedido(String fecha, Usuario comprador){
 		this.fecha = fecha;
 		this.comprador = comprador;
-		this.costeTotalPedido();;
+		this.coste= 0;
 	}
 	//Getters y Setters
+	
+	public long getId(){
+		return this.id;
+	}
 	
 	public String getFecha(){
 		return this.fecha;
@@ -46,7 +56,7 @@ public class Pedido {
 		return this.cesta;
 	}
 	
-	public void setCesta(List<Videojuego> cesta){
+	public void setCesta(ArrayList<Videojuego> cesta){
 		this.cesta=cesta;
 	}
 	
@@ -77,10 +87,21 @@ public class Pedido {
 	public void agregarVideojuego(Videojuego v){
 		this.cesta.add(v);
 	}
+	
+	public void eliminarVideojuego(Videojuego v){
+		for(int i = 0;i<1;i++){
+			this.cesta.remove(v);
+		}
+	}
 
 	@Override
 	public String toString() {
 		return "Pedido " + id + " -- " + fecha + ", " + comprador.getNombre() + ", " + coste;
+	}
+	
+	public void nuevaCesta(){
+		ArrayList<Videojuego> cesta= new ArrayList<Videojuego>();
+		this.cesta = cesta;
 	}
 	
 	
