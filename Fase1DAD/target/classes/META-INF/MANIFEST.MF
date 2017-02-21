@@ -1,7 +1,11 @@
 Manifest-Version: 1.0
 Implementation-Title: ProyectoDAD
 Implementation-Version: 0.0.1-SNAPSHOT
+<<<<<<< HEAD
 Built-By: alvar
+=======
+Built-By: familia
+>>>>>>> origin/master
 Implementation-Vendor-Id: Mauro
 Build-Jdk: 1.8.0_121
 Implementation-URL: http://projects.spring.io/spring-boot/MVC/
