@@ -1,9 +1,4 @@
-package Mauro;
-<<<<<<< HEAD
-
-import javax.persistence.CascadeType; 
-=======
->>>>>>> origin/master
+package Mauro; 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
