@@ -29,12 +29,5 @@ public class ControladorPedidos {
 		repositorioVideojuegos.save(TheLastOfUs);
 		repositorioVideojuegos.save(F12017);
 	}
-		
-	@RequestMapping("/pedido/{id}")
-	public String verVideojuego(Model model, @PathVariable long id){
-		Pedido pedido = repositorioPedidos.findOne(id);
-		model.addAttribute("pedido", pedido);
-		return "ver_pedido";
-	}
 
 }

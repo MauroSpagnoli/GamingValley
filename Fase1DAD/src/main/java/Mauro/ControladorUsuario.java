@@ -1,5 +1,7 @@
 package Mauro;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+
 import javax.annotation.PostConstruct; 
 import javax.servlet.http.HttpSession;
 
@@ -26,7 +28,7 @@ public class ControladorUsuario {
 	
 	@PostConstruct
 	public void init(){
-		this.pedidoActual = new Pedido();
+		this.pedidoActual = null;
 	}
 	
 	@GetMapping("/login_usuario")
@@ -39,6 +41,15 @@ public class ControladorUsuario {
 		}
 	}
 	
+	
+	@RequestMapping("/pedido/{id}")
+	public String verVideojuego(Model model, @PathVariable long id){
+		Pedido pedido = repositorioPedidos.findOne(id);
+		model.addAttribute("pedido", pedido);
+		System.out.println(pedido.getCesta());
+		return "ver_pedido";
+	}
+
 	@PostMapping("/logearse")
 	public String logearse(Model model, HttpSession sesion, Usuario usuario){
 		Usuario usuarioIntento = this.repositorioUsuarios.findByEmailAndPassword(usuario.getEmail(),usuario.getPassword());
@@ -63,14 +74,16 @@ public class ControladorUsuario {
 		model.addAttribute("pedidos", repositorioPedidos.findByComprador(this.usuarioLogeado));
 		return "pedidos";
 	}
-	//FALTA IMPLEMENTAR ESTE METODO
+
+	
 	@GetMapping("/pedido/{idPedido}/eliminar_videojuego_pedido/{idVideojuego}")
 	public String eliminarVideojuegoPedido(HttpSession sesion, @PathVariable long idPedido,@PathVariable long idVideojuego){
-		Pedido pedido = this.repositorioPedidos.findById(idPedido);
 		Videojuego videojuego = this.repositorioVideojuegos.findById(idVideojuego);
+		Pedido pedido = this.repositorioPedidos.findById(idPedido);
 		pedido.eliminarVideojuego(videojuego);
-		pedido.costeTotalPedido();
+		videojuego.eliminarPedido(pedido);
 		this.repositorioPedidos.save(pedido);
+		this.repositorioVideojuegos.save(videojuego);
 		return"videojuego_eliminado_pedido";
 	}
 	
@@ -129,20 +142,27 @@ public class ControladorUsuario {
 	@GetMapping("/eliminar_pedido/{id}")
 	public String eliminarPedido(@PathVariable long id,HttpSession sesion){
 		Pedido pedido = this.repositorioPedidos.findByIdAndComprador(id,this.usuarioLogeado);
+		pedido.vaciarPedido();
 		this.repositorioPedidos.delete(pedido);
 		return"pedido_eliminado";
 	}
 	
 	@PostMapping("/agregar_videojuego_pedido_actual/{id}")
 	public String agregar_v_pactual(@PathVariable long id,HttpSession sesion){
-		Videojuego videojuego = this.repositorioVideojuegos.getOne(id);
-		this.pedidoActual.agregarVideojuego(videojuego);
-		this.pedidoActual.costeTotalPedido();
-		this.repositorioPedidos.save(pedidoActual);
-		System.out.println(pedidoActual.getCesta());
-		return"videojuego_agregado_pedido";
+			Videojuego videojuego = this.repositorioVideojuegos.getOne(id);
+			videojuego.getPedidos().add(this.pedidoActual);
+			videojuego.comprarVideojuego();
+			this.pedidoActual.getCesta().add(videojuego);
+			this.pedidoActual.costeTotalPedido();
+			this.repositorioPedidos.save(this.pedidoActual);
+			this.repositorioVideojuegos.save(videojuego);
+			return"videojuego_agregado_pedido";
 	}
-
+	
+	@GetMapping("/pedido_requerido_")
+	public String pedidoRequerido(){
+		return"pedido_requerido";
+	}
 	
 	@PostMapping("/videojuego/{id}/nueva_form_valoracion")
 	public String agregarValoracion(Model model,@PathVariable long id, Valoracion valoracion,HttpSession sesion){

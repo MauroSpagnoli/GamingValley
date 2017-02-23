@@ -1,13 +1,15 @@
 package Mauro;
 
-import java.util.ArrayList;
+import java.util.ArrayList; 
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -26,7 +28,9 @@ public class Videojuego {
 // 	private String estaDisponible;
 	@OneToMany
 	private List<Valoracion> valoraciones= new ArrayList<>();
-		
+	@ManyToMany
+	private List<Pedido> pedidos;
+	
 	public Videojuego(String titulo, String descripcion, int stock, float precio) {
 		this.stock = stock;
 		this.titulo = titulo;
@@ -34,11 +38,20 @@ public class Videojuego {
 		this.precio = precio;
 	}
 	
+	
 	public Videojuego(){
 
 	}
 
 	// Getters y Setters
+	
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
+	}
 	
 	public String getTitulo(){
 		return this.titulo;
@@ -49,6 +62,10 @@ public class Videojuego {
 	}
 	public void comprarVideojuego(){
 		this.stock--;
+	}
+	
+	public void setId(long id){
+		this.id = id;
 	}
 	
 	public void setTitulo(String titulo){
@@ -101,6 +118,17 @@ public class Videojuego {
 	
 	public void agregarValoracion (Valoracion valoracion){
 		this.valoraciones.add(valoracion);
+	}
+	
+	public void eliminarPedido(Pedido pedido){
+		this.pedidos.remove(pedido);
+		pedido.costeTotalPedido();
+	}
+	
+	private void calcularPrecioPedidos(){
+		for(Pedido pedido: this.pedidos){
+			pedido.costeTotalPedido();
+		}
 	}
 	
 	@Override

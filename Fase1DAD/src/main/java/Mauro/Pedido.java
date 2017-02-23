@@ -1,6 +1,6 @@
 package Mauro;
 
-import javax.persistence.CascadeType;
+import javax.persistence.CascadeType; 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,7 +25,7 @@ public class Pedido {
 	private String fecha;
 	@OneToOne
 	private Usuario comprador;
-	@ManyToMany
+	@ManyToMany(mappedBy="pedidos")
 	private List<Videojuego> cesta = new ArrayList<>();
 	private double coste;
 	
@@ -84,14 +84,22 @@ public class Pedido {
 		this.coste = aux;
 	}
 	
+	public void vaciarPedido(){
+		for(Videojuego videojuego: this.cesta){
+			videojuego.eliminarPedido(this);
+		}
+		this.cesta.clear();
+	}
+	
 	public void agregarVideojuego(Videojuego v){
-		this.cesta.add(v);
+		for(int i = 0;i==0;i++){
+			this.cesta.add(v);
+		}
 	}
 	
 	public void eliminarVideojuego(Videojuego v){
-		for(int i = 0;i<1;i++){
 			this.cesta.remove(v);
-		}
+			this.costeTotalPedido();
 	}
 
 	@Override
