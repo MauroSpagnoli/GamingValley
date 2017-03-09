@@ -152,8 +152,10 @@ public class ControladorUsuario {
 	}
 	@GetMapping("/crearpdf")
 	public String crearpdf(HttpSession sesion){
+
 		Cliente c=new Cliente("127.0.0.1", 9990,pedidoActual);
 		c.iniciar();
+
 		return "";
 		
 	}

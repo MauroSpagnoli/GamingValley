@@ -15,6 +15,7 @@ public Cliente(String h, int p,Pedido pedido){
 	host=h;
 	puerto=p;
 	this.pedido=pedido;
+
 }
 public void iniciar(){
 try{
