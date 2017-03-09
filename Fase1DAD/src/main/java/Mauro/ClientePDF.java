@@ -3,7 +3,7 @@ package Mauro;
 import java.io.*;
 import java.net.*;
 import java.util.Scanner;
-public class Cliente {
+public class ClientePDF {
 private Socket sCliente;
 private Scanner entrada;
 private PrintStream salida;
@@ -11,7 +11,7 @@ private String host; //IP del servidor con el que me voy a conectar
 private int puerto;
 private String mensaje="";
 private Pedido pedido;
-public Cliente(String h, int p,Pedido pedido){
+public ClientePDF(String h, int p,Pedido pedido){
 	host=h;
 	puerto=p;
 	this.pedido=pedido;
