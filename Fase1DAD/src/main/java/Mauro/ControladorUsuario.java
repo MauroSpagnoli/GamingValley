@@ -2,6 +2,11 @@ package Mauro;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.InterfaceAddress;
+import java.net.Socket;
+
 import javax.annotation.PostConstruct; 
 import javax.servlet.http.HttpSession;
 
@@ -25,7 +30,6 @@ public class ControladorUsuario {
 	private ValoracionRepository repositorioValoraciones;
 	@Autowired
 	private PedidoRepository repositorioPedidos;
-	
 	@PostConstruct
 	public void init(){
 		this.pedidoActual = null;
@@ -145,6 +149,13 @@ public class ControladorUsuario {
 		pedido.vaciarPedido();
 		this.repositorioPedidos.delete(pedido);
 		return"pedido_eliminado";
+	}
+	@GetMapping("/crearpdf")
+	public String crearpdf(HttpSession sesion){
+		Cliente c=new Cliente("127.0.0.1", 9990,pedidoActual);
+		c.iniciar();
+		return "";
+		
 	}
 	
 	@PostMapping("/agregar_videojuego_pedido_actual/{id}")

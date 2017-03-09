@@ -10,17 +10,19 @@
 		<h1>Pedidos</h1>
 		<ul>
 		{{#pedidos}}
-			<li><a href="/pedido/{{id}}">{{.}}</a></li>
+			<li><a href="/pedido/{{id}}">Numero Pedido: {{this.id}}   	Fecha:{{this.fecha}}   Usuario: {{this.comprador.nombre}}</a></li>
 			<form action ="/cambiar_pedido_actual/{{this.id}}" method="get">
 			<button class="btn waves-effect waves-light" type="submit" name="action">
     			<i class="material-icons right">Seleccionar pedido</i>
-  			</button>
-  		<!--  	<input type="hidden" name="_csrf" value="{{token}}"/> -->			
+  			</button>	
 			</form>
 			<form action ="/eliminar_pedido/{{this.id}}" method="get">
 			<button class="btn waves-effect waves-light" type="submit" name="action">
     			<i class="material-icons right">Eliminar pedido</i>
-   		<!-- 	<input type="hidden" name="_csrf" value="{{token}}"/> --> 		
+  			</button>
+  			</form>
+  			<form action="/crearpdf" method="get">
+  			<button class="btn waves-effect waves-light" type="submit" name="action">
   			</button>
 			</form>
 		{{/pedidos}}
