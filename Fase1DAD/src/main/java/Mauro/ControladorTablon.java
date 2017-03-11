@@ -1,5 +1,6 @@
 package Mauro;
-import javax.annotation.PostConstruct; 
+import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,8 +30,8 @@ public class ControladorTablon{
 			repositorioNoticias.save(new Noticia("Resident Evil 7", "2017-01-29", "Resident Evil 7 rompe los records de ventas en un día."));
 			Videojuego ResidentEvil7 = new Videojuego("Resident Evil 7", "Miedo", 60, 50.0f);
 			Videojuego FIFA17 = new Videojuego("FIFA 17", "Deporte", 60, 60.0f);
-			Usuario usuarioMauro = new Usuario("Mauro","Spagnoli","mauro96","mauro@gmail.com","C/Alcalde de Mostoles 33","Mostoles");
-			Usuario usuarioMiguel= new Usuario("Miguel","Robledo","miguel96","miguel@gmail.com","C/Alcalde de Mostoles 33","Mostoles");
+			Usuario usuarioMauro = new Usuario("Mauro","Spagnoli","mauro96","mauro@gmail.com","C/Alcalde de Mostoles 33","Mostoles","ROLE_USER","ROLE_ADMIN");
+			Usuario usuarioMiguel= new Usuario("Miguel","Robledo","miguel96","miguel@gmail.com","C/Alcalde de Mostoles 33","Mostoles","ROLE_USER","ROLE_ADMIN");
 			repositorioUsuarios.save(usuarioMauro);
 			repositorioUsuarios.save(usuarioMiguel);
 			Valoracion valoracion1 = new Valoracion(6, "Buen juego", "28/01/2016",usuarioMauro);
@@ -46,7 +47,8 @@ public class ControladorTablon{
 		}
 				
 		@RequestMapping("/noticias")
-		public String tablon(Model model) {
+		public String tablon(Model model, HttpServletRequest request) {
+			model.addAttribute("admin", request.isUserInRole("ADMIN"));
 			model.addAttribute("noticias", repositorioNoticias.findAll());
 			return "noticias";
 		}
@@ -59,13 +61,15 @@ public class ControladorTablon{
 		}
 		
 		@RequestMapping("/videojuegos")
-		public String verVideojuegos(Model model){
+		public String verVideojuegos(Model model, HttpServletRequest request){
+			model.addAttribute("admin",request.isUserInRole("ADMIN"));
 			model.addAttribute("videojuegos",repositorioVideojuegos.findAll());
 			return "videojuegos";
 		}
 		
 		@RequestMapping("/videojuego/{id}")
-		public String verVideojuego(Model model, @PathVariable long id){
+		public String verVideojuego(Model model, @PathVariable long id, HttpServletRequest request){
+			model.addAttribute("user", request.isUserInRole("USER"));
 			Videojuego videojuego = repositorioVideojuegos.findOne(id);
 			model.addAttribute("Videojuego", videojuego);
 			return "ver_videojuego";
@@ -90,6 +94,5 @@ public class ControladorTablon{
 			repositorioVideojuegos.save(videojuego);
 			return "videojuego_guardado";
 		}
-
 
 }

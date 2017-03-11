@@ -15,11 +15,14 @@
 		<li><a href="/videojuego/{{Videojuego.id}}/ver_valoracion/{{-index}}">{{this.comentario}}</a></li>
 	{{/Videojuego.valoraciones}}
 	<br>
+	{{#user}}
 	<a href="/videojuego/{{Videojuego.id}}/form_valoracion">Nueva valoración</a>
+	<br>
 	<br>
 	<form action="/agregar_videojuego_pedido_actual/{{Videojuego.id}}" method="post">
 		<input type='submit' value='Agregar videojuego al pedido actual'/>
 	</form>
+	{{/user}}
 	<br>
 	<a href="/videojuegos">Volver al tablón de videojuegos</a>
 	<br>

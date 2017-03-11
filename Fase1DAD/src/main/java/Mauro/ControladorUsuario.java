@@ -1,17 +1,21 @@
 package Mauro;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
-import javax.annotation.PostConstruct; 
+import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 @Controller
 public class ControladorUsuario {
 	
@@ -31,16 +35,79 @@ public class ControladorUsuario {
 		this.pedidoActual = null;
 	}
 	
-	@GetMapping("/login_usuario")
-	public String inicioSesion(Model model, HttpSession sesion){
-		if(this.usuarioLogeado== null){
-			return "login_usuario";
-		}else{
-			model.addAttribute("usuario",this.usuarioLogeado);
-			return"login_correcto";
-		}
+	@RequestMapping("/")
+	public String paginaInicial(Model model, HttpServletRequest request){
+		model.addAttribute("user", request.isUserInRole("USER"));
+		return "index";
 	}
 	
+	@GetMapping("/login_usuario")
+	public String inicioSesion(Model model, HttpSession sesion){
+		/*if(this.usuarioLogeado== null){
+			return "login_usuario";
+		}else{*/
+			model.addAttribute("usuario",this.usuarioLogeado);
+			return "login_usuario";
+		//}
+	}
+
+	@PostMapping("/logearse")
+	public String logearse(Model model, HttpSession sesion, Usuario usuario){
+		//Usuario usuarioIntento = this.repositorioUsuarios.findByEmailAndPassword(usuario.getEmail(),usuario.getPasswordHash());
+		/*if(usuarioIntento==null){
+			return "login_incorrecto";
+		}else{*/
+			//this.usuarioLogeado = usuarioIntento;
+			model.addAttribute("usuario", this.usuarioLogeado);
+			return "login_correcto";	
+		//}
+	}
+	
+    @GetMapping("/login_correcto")
+    public String loginCorrecto() {
+    	return "login_correcto";
+    }
+    
+    @GetMapping("/login_incorrecto")
+    public String loginIncorrecto() {
+    	return "login_incorrecto";
+    }
+    
+	@GetMapping("/registro")
+	public String registroUsuario(Model model,Usuario usuario, HttpSession sesion){
+		usuarioLogeado=usuario;
+		usuarioLogeado.setPasswordHash(new BCryptPasswordEncoder().encode(usuario.getPasswordHash()));
+		usuarioLogeado.setRoles("ROLE_USER");
+		repositorioUsuarios.save(usuarioLogeado);
+		return "registro_correcto.html";
+	}
+
+	@GetMapping("/form_registro")
+	public String mostrarForm(Model model){
+		return "registro_usuario.html";
+	}
+	
+	@GetMapping("/deslogearse")
+	public String deslogearse(Model model,HttpSession sesion){
+		//if (this.usuarioLogeado != null){
+			this.usuarioLogeado = null;
+			this.pedidoActual = null;
+			return "deslogeo_correcto";
+		/*}else{
+			return "no_logeado";
+		}*/
+	}
+	
+    @GetMapping("/deslogeo_correcto")
+    public String deslogueoCorrecto() {
+    	return "deslogeo_correcto";
+    }
+	
+	@RequestMapping("/pedidos")
+	public String tablon(Model model,HttpSession sesion) {
+		model.addAttribute("pedidos", repositorioPedidos.findByComprador(this.usuarioLogeado));
+		return "pedidos";
+	}
 	
 	@RequestMapping("/pedido/{id}")
 	public String verVideojuego(Model model, @PathVariable long id){
@@ -49,32 +116,6 @@ public class ControladorUsuario {
 		System.out.println(pedido.getCesta());
 		return "ver_pedido";
 	}
-
-	@PostMapping("/logearse")
-	public String logearse(Model model, HttpSession sesion, Usuario usuario){
-		Usuario usuarioIntento = this.repositorioUsuarios.findByEmailAndPassword(usuario.getEmail(),usuario.getPassword());
-		if(usuarioIntento==null){
-			return "login_incorrecto";
-		}else{
-			this.usuarioLogeado = usuarioIntento;
-			return "login_correcto";	
-		}
-	}
-	
-	@GetMapping("/registro")
-	public String registroUsuario(Model model,Usuario usuario, HttpSession sesion){
-		usuarioLogeado=usuario;
-		repositorioUsuarios.save(usuarioLogeado);
-		return "registro_correcto.html";
-	}
-	
-	
-	@RequestMapping("/pedidos")
-	public String tablon(Model model,HttpSession sesion) {
-		model.addAttribute("pedidos", repositorioPedidos.findByComprador(this.usuarioLogeado));
-		return "pedidos";
-	}
-
 	
 	@GetMapping("/pedido/{idPedido}/eliminar_videojuego_pedido/{idVideojuego}")
 	public String eliminarVideojuegoPedido(HttpSession sesion, @PathVariable long idPedido,@PathVariable long idVideojuego){
@@ -88,46 +129,21 @@ public class ControladorUsuario {
 	}
 	
 	
-	@GetMapping("/deslogearse")
-	public String deslogearse(Model model,HttpSession sesion){
-		if (this.usuarioLogeado != null){
-			this.usuarioLogeado= null;
-			this.pedidoActual=null;
-			return "deslogeo_correcto";
-		}else{
-			return "no_logeado";
-		}
-		
-	}
-
-
-	@GetMapping("/form_registro")
-	public String mostrarForm(Model model){
-		return "registro_usuario.html";
-	}
-
-	
-	//Método de prueba para ver si se registran los usuarios
-	@RequestMapping("/usuario/lista_usuarios")
-	public String verUsuariosLogeados(Model model){
-		model.addAttribute("usuarios",repositorioUsuarios.findAll());
-		return "usuarios";
-	}
-	
 	@GetMapping("/nuevo_pedido_actual")
 	public String pedidoActualNuevo(HttpSession sesion) {
-		if(this.usuarioLogeado!=null){
+		//if(this.usuarioLogeado!=null){
 			Pedido pedido = new Pedido();
 			pedido.setComprador(this.usuarioLogeado);
-			pedido.setFecha("17-02-2017");
+			Calendar fecha = new GregorianCalendar();
+			pedido.setFecha(fecha.get(Calendar.DATE) + "-" + fecha.get(Calendar.MONTH) + "-" + fecha.get(Calendar.YEAR));
 			this.pedidoActual = pedido;
 			this.repositorioPedidos.save(pedido);
 			System.out.println(this.pedidoActual.getId());
 			System.out.println(this.pedidoActual.getCesta());
 			return"pedido_guardado";
-		}else{
+		/*}else{
 			return"logearse_necesita";
-		}
+		}*/
 	}
 	
 	@GetMapping("/cambiar_pedido_actual/{id}")
@@ -159,7 +175,7 @@ public class ControladorUsuario {
 			return"videojuego_agregado_pedido";
 	}
 	
-	@GetMapping("/pedido_requerido_")
+	@GetMapping("/pedido_requerido")
 	public String pedidoRequerido(){
 		return"pedido_requerido";
 	}
@@ -177,11 +193,11 @@ public class ControladorUsuario {
 	
 	@GetMapping("/videojuego/{id}/form_valoracion")
 	public String mostrarForm(Model model, @PathVariable long id,HttpSession sesion){
-		if(this.usuarioLogeado != null){
+		//if(this.usuarioLogeado != null){
 			model.addAttribute("id",id);
 			return "form_valoracion";
-		}else{
+		/*}else{
 			return "logearse_necesita";
-		}
+		}*/
 	}
 }

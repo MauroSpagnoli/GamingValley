@@ -1,0 +1,32 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<link rel="stylesheet" href="css/materialize.css">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+</head>
+<body style="background-color:#A9F5BC">
+<br>
+<center>
+	<h1>Gaming Valley</h1>
+	<br>
+	<a href="/noticias" class="waves-effect waves-light btn">Noticias</a>
+	<br>
+	<br>
+	<a href="/videojuegos" class="waves-effect waves-light btn">Tienda</a>
+	<br>
+	<br>
+	<a href="/login_usuario" class="waves-effect waves-light btn">Iniciar sesión de usuario</a>
+	<br>
+	<br>
+	{{#user}}
+	<a href="/pedidos" class="waves-effect waves-light btn">Ver pedido actual</a>
+	<br>
+	<br>
+	<a href="/deslogearse" class="waves-effect waves-light btn">Cerrar sesión</a>
+	{{/user}}
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+</center>
+</body>
+</html>
