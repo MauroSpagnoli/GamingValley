@@ -43,7 +43,10 @@ public class ControladorTablon{
 			FIFA17.getValoraciones().add(valoracion1);
 			FIFA17.getValoraciones().add(valoracion2);
 			repositorioVideojuegos.save(ResidentEvil7);
-			repositorioVideojuegos.save(FIFA17);	
+			repositorioVideojuegos.save(FIFA17);
+			//Cliente c=new Cliente("127.0.0.1", 9990);
+			//c.iniciar();
+		
 		}
 				
 		@RequestMapping("/noticias")

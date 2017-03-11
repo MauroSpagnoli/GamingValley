@@ -97,7 +97,7 @@ public class Pedido {
 
 	@Override
 	public String toString() {
-		return "Pedido " + id + " -- " + fecha + ", " + comprador.getNombre() + ", " + coste;
+		return "Pedido " + id + " -- " + fecha + ", " + comprador.getNombre() + ", " + coste +"\n"+this.cesta;
 	}
 	
 	public void nuevaCesta(){
