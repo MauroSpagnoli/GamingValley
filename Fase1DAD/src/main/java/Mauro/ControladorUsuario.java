@@ -2,18 +2,13 @@ package Mauro;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-
-<<<<<<< HEAD
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
-=======
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.InterfaceAddress;
 import java.net.Socket;
-
 import javax.annotation.PostConstruct; 
->>>>>>> origin/master
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -170,16 +165,14 @@ public class ControladorUsuario {
 		this.repositorioPedidos.delete(pedido);
 		return"pedido_eliminado";
 	}
+	
 	@GetMapping("/crearpdf")
 	public String crearpdf(HttpSession sesion){
-
 		ClientePDF c=new ClientePDF("127.0.0.1", 9990,pedidoActual);
 		c.iniciar();
 		ClienteEmail e=new ClienteEmail("127.0.0.1",9990,pedidoActual);
 		e.iniciar();
-
 		return "";
-		
 	}
 	
 	@PostMapping("/agregar_videojuego_pedido_actual/{id}")
