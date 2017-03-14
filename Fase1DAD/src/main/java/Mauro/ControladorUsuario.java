@@ -37,7 +37,7 @@ public class ControladorUsuario {
 		sesion = request.getSession();
 		sesion.setAttribute("email", currentPrincipalName);
 		boolean noLogeado = true;
-		if(currentPrincipalName!="anonymousUser"){ //Nadie conectado
+		if(currentPrincipalName!="anonymousUser"){ //Si el usuario NO es anonimo
 			noLogeado = false;
 		}
 		model.addAttribute("noLogeado",noLogeado);
@@ -157,7 +157,7 @@ public class ControladorUsuario {
 		Pedido pedidoPDF = this.repositorioPedidos.findByIdAndComprador(id, usuarioBuscado);
 		ClientePDF c=new ClientePDF("127.0.0.1", 9990,pedidoPDF);
 		c.iniciar();
-		ClienteEmail e=new ClienteEmail("127.0.0.1",9990,pedidoPDF);
+		ClienteEmail e=new ClienteEmail("127.0.0.1",9990);
 		e.iniciar();
 		return "";
 	}
