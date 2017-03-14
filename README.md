@@ -19,14 +19,13 @@ Nuestra aplicación web se basa en la **venta** de videojuegos y de conocer las 
 
 ## Servicios internos de la aplicación:
 
-- **Notificación por correo:** https://github.com/migueljrd/EmailSender
-- **Generación de documento PDF:** https://github.com/migueljrd/ServicioPDFSockets
-
+- **Notificación por correo:** Cuando se realiza una compra, se enviará un correo con la notificación de la compra.
+- **Generación de documento PDF:** Se podrá generar un documento PDF a la hora de poder visualizar los pedidos.
 
 ## Repositorios con los servicios:
 
-- **Notificación por correo:** Cuando se realiza una compra, se enviará un correo con la notificación de la compra.
-- **Generación de documento PDF:** Se podrá generar un documento PDF a la hora de poder visualizar los pedidos.
+- **Notificación por correo:** https://github.com/migueljrd/EmailSender
+- **Generación de documento PDF:** https://github.com/migueljrd/ServicioPDFSockets
 
 ## Integrantes de desarrollo:
 
