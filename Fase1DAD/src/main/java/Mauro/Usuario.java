@@ -28,6 +28,7 @@ public class Usuario {
 	private String email;
 	private String direccion;
 	private String ciudad;
+	private long numeroPedidoActual;
 	
 	@ElementCollection(fetch = FetchType.EAGER)
 	private List<String> roles;
@@ -46,6 +47,7 @@ public class Usuario {
 		this.direccion = direccion;
 		this.ciudad = ciudad;
 		this.roles = new ArrayList<>(Arrays.asList(roles));
+		this.numeroPedidoActual = 0;
 	}
 
 
@@ -55,8 +57,17 @@ public class Usuario {
 
 	//Getters y Setters
 	 
+	
 	public String getCiudad() {
 		return ciudad;
+	}
+
+	public long getNumeroPedidoActual() {
+		return numeroPedidoActual;
+	}
+
+	public void setNumeroPedidoActual(long numeroPedidoActual) {
+		this.numeroPedidoActual = numeroPedidoActual;
 	}
 
 	public void setCiudad(String ciudad) {
