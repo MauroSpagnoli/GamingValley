@@ -36,11 +36,11 @@ public class ControladorUsuario {
 		String currentPrincipalName = authentication.getName();
 		sesion = request.getSession();
 		sesion.setAttribute("email", currentPrincipalName);
-		boolean loged = true;
+		boolean noLogeado = true;
 		if(currentPrincipalName!="anonymousUser"){ //Nadie conectado
-			loged = false;
+			noLogeado = false;
 		}
-		model.addAttribute("loged",loged);
+		model.addAttribute("noLogeado",noLogeado);
 		model.addAttribute("user", request.isUserInRole("USER"));
 		return "index";
 	}
