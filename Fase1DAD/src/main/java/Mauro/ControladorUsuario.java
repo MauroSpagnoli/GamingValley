@@ -4,11 +4,6 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
-import java.net.InetAddress;
-import java.net.InterfaceAddress;
-import java.net.Socket;
-import javax.annotation.PostConstruct; 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
