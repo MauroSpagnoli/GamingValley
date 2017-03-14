@@ -15,16 +15,19 @@
 			<button class="btn waves-effect waves-light" type="submit" name="action">
     			<i class="material-icons right">Seleccionar pedido</i>
   			</button>	
+  			<input type="hidden" name="_csrf" value="{{token}}"/>
 			</form>
 			<form action ="/eliminar_pedido/{{this.id}}" method="get">
 			<button class="btn waves-effect waves-light" type="submit" name="action">
     			<i class="material-icons right">Eliminar pedido</i>
   			</button>
+  			<input type="hidden" name="_csrf" value="{{token}}"/>
   			</form>
   			<form action="/crearpdf" method="get">
   			<button class="btn waves-effect waves-light" type="submit" name="action">
   			<i class="material-icons right">Confirmar y crear PDF</i>
   			</button>
+  			<input type="hidden" name="_csrf" value="{{token}}"/>
 			</form>
 		{{/pedidos}}
 		</ul> 	

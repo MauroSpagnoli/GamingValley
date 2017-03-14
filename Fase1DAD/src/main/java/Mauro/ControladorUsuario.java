@@ -81,7 +81,7 @@ public class ControladorUsuario {
 		return "registro_usuario.html";
 	}
 	
-	@GetMapping("/deslogearse")
+	@PostMapping("/deslogearse")
 	public String deslogearse(Model model,HttpSession sesion){
 			return "deslogeo_correcto";
 	}

@@ -25,7 +25,12 @@
 	<a href="/pedidos" class="waves-effect waves-light btn">Ver pedido actual</a>
 	<br>
 	<br>
-	<a href="/deslogearse" class="waves-effect waves-light btn">Cerrar sesión</a>
+	<form action="/deslogearse" method="post">
+		 <button class="waves-effect waves-light btn" type="submit" name="action">
+    			<i class="material-icons right">Cerrar sesión</i>
+  		</button>
+		<input type="hidden" name="_csrf" value="{{token}}"/>
+	</form>
 	{{/user}}
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>

@@ -12,6 +12,7 @@
 		<li><a href="/videojuego/{{this.id}}">{{this.titulo}}</a>
 		<form action="/pedido/{{pedido.id}}/eliminar_videojuego_pedido/{{this.id}}") method="get">
 		<input type='submit' value='Eliminar videojuego del pedido'/>
+		<input type="hidden" name="_csrf" value="{{token}}"/>
 		</form>
 		</li>
 	{{/pedido.cesta}}
