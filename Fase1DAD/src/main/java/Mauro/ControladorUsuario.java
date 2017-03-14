@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class ControladorUsuario {
-	
 
 	@Autowired
 	private VideojuegoRepository repositorioVideojuegos;
@@ -37,6 +36,11 @@ public class ControladorUsuario {
 		String currentPrincipalName = authentication.getName();
 		sesion = request.getSession();
 		sesion.setAttribute("email", currentPrincipalName);
+		boolean loged = false;
+		if(currentPrincipalName==null){ //Nadie conectado
+			loged = true;
+			model.addAttribute("loged",loged);
+		}
 		model.addAttribute("user", request.isUserInRole("USER"));
 		return "index";
 	}
@@ -47,13 +51,11 @@ public class ControladorUsuario {
 			Usuario usuarioBuscado = repositorioUsuarios.findByEmail((String) sesion.getAttribute("email"));
 			model.addAttribute("usuario",usuarioBuscado);
 			return "login_usuario";
-		//}
 	}
 
 	@PostMapping("/logearse")
 	public String logearse(Model model, HttpSession sesion){
-			return "login_correcto";	
-		//}
+			return "login_correcto";
 	}
 	
     @GetMapping("/login_correcto")

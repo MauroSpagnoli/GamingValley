@@ -1,7 +1,6 @@
 package Mauro;
-import javax.annotation.PostConstruct;
-import javax.servlet.http.HttpServletRequest;
 
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,31 +22,6 @@ public class ControladorTablon{
 		private ValoracionRepository repositorioValoraciones;
 		@Autowired
 		private UsuarioRepository repositorioUsuarios;
-		
-		@PostConstruct
-		public void init() {
-			repositorioNoticias.save(new Noticia("Nueva PS5", "2017-01-29", "Se ha diseñado y creado la nueva PS5."));
-			repositorioNoticias.save(new Noticia("Resident Evil 7", "2017-01-29", "Resident Evil 7 rompe los records de ventas en un día."));
-			Videojuego ResidentEvil7 = new Videojuego("Resident Evil 7", "Miedo", 60, 50.0f);
-			Videojuego FIFA17 = new Videojuego("FIFA 17", "Deporte", 60, 60.0f);
-			Usuario usuarioMauro = new Usuario("Mauro","Spagnoli","mauro96","mauro@gmail.com","C/Alcalde de Mostoles 33","Mostoles","ROLE_USER","ROLE_ADMIN");
-			Usuario usuarioMiguel= new Usuario("Miguel","Robledo","miguel96","miguel@gmail.com","C/Alcalde de Mostoles 33","Mostoles","ROLE_USER","ROLE_ADMIN");
-			repositorioUsuarios.save(usuarioMauro);
-			repositorioUsuarios.save(usuarioMiguel);
-			Valoracion valoracion1 = new Valoracion(6, "Buen juego", "28/01/2016",usuarioMauro);
-			Valoracion valoracion2 = new Valoracion(8,"Decente", "28/01/2016",usuarioMiguel);
-			repositorioValoraciones.save(valoracion1);
-			repositorioValoraciones.save(valoracion2);
-			//ResidentEvil7.getValoraciones().add(valoracion1);
-			//ResidentEvil7.getValoraciones().add(valoracion2);
-			FIFA17.getValoraciones().add(valoracion1);
-			FIFA17.getValoraciones().add(valoracion2);
-			repositorioVideojuegos.save(ResidentEvil7);
-			repositorioVideojuegos.save(FIFA17);
-			//Cliente c=new Cliente("127.0.0.1", 9990);
-			//c.iniciar();
-		
-		}
 				
 		@RequestMapping("/noticias")
 		public String tablon(Model model, HttpServletRequest request) {
@@ -97,5 +71,4 @@ public class ControladorTablon{
 			repositorioVideojuegos.save(videojuego);
 			return "videojuego_guardado";
 		}
-
 }
