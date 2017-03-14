@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -125,11 +124,11 @@ public class Videojuego {
 		pedido.costeTotalPedido();
 	}
 	
-	private void calcularPrecioPedidos(){
+	/*private void calcularPrecioPedidos(){
 		for(Pedido pedido: this.pedidos){
 			pedido.costeTotalPedido();
 		}
-	}
+	}*/
 	
 	@Override
 	public String toString() {
