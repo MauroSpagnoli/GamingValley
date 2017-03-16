@@ -9,10 +9,12 @@ public class ClienteEmail {
 	private PrintStream salida;
 	private String host; //IP del servidor con el que me voy a conectar
 	private int puerto;
+	private Pedido pedidoPDF;
 
-	public ClienteEmail(String h, int p){
+	public ClienteEmail(String h, int p,Pedido pedidoPDF){
 		host=h;
 		puerto=p;
+		this.pedidoPDF=pedidoPDF;
 	}
 
 	public void iniciar(){
@@ -25,7 +27,7 @@ public class ClienteEmail {
 			salida=new PrintStream(sCliente.getOutputStream());
 			entrada=new Scanner(sCliente.getInputStream());
 			
-			String email="a.hinojal@alumnos.urjc.es";
+			String email=pedidoPDF.getComprador().getEmail();
 			salida.println(email);
 			System.out.print(email);
 			finalizar();
