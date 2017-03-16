@@ -1,8 +1,7 @@
 package Mauro;
 
-import java.util.Calendar;
+import java.util.Calendar; 
 import java.util.GregorianCalendar;
-import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -155,7 +154,7 @@ public class ControladorUsuario {
 	public String crearpdf(@PathVariable long id,HttpSession sesion){
 		Usuario usuarioBuscado = repositorioUsuarios.findByEmail((String) sesion.getAttribute("email"));
 		Pedido pedidoPDF = this.repositorioPedidos.findByIdAndComprador(id, usuarioBuscado);
-		ClientePDF c=new ClientePDF("127.0.0.1", 9990,pedidoPDF);
+		ClientePDF c=new ClientePDF("127.0.0.1", 9991,pedidoPDF);
 		c.iniciar();
 		ClienteEmail e=new ClienteEmail("127.0.0.1",9990);
 		e.iniciar();

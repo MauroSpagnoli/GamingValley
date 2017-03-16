@@ -1,9 +1,10 @@
 package Mauro;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequest; 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,10 +19,6 @@ public class ControladorTablon{
 		private NoticiaRepository repositorioNoticias;
 		@Autowired
 		private VideojuegoRepository repositorioVideojuegos;
-		@Autowired
-		private ValoracionRepository repositorioValoraciones;
-		@Autowired
-		private UsuarioRepository repositorioUsuarios;
 				
 		@RequestMapping("/noticias")
 		public String tablon(Model model, HttpServletRequest request) {
@@ -60,10 +57,21 @@ public class ControladorTablon{
 			return "ver_valoracion";
 		}
 		
+		
+		@GetMapping("/noticias/noticia_nueva")
+		public String noticiaNueva(Model model){
+			return"nueva_noticia";
+		}
+		
 		@PostMapping("/noticias/nueva_noticia")
 		public String agregarNoticia(Model model,Noticia noticia) {
 			repositorioNoticias.save(noticia);
 			return "noticia_guardada";
+		}
+		
+		@GetMapping("/videojuegos/nuevo_videojuego")
+		public String juegoNuevo(){
+			return "agregar_videojuego";
 		}
 		
 		@PostMapping("/videojuegos/agregar_videojuego")
