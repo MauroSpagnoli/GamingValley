@@ -6,7 +6,6 @@ import java.util.Scanner;
 
 public class ClientePDF {
 	private Socket sCliente;
-	private Scanner entrada;
 	private PrintStream salida;
 	private String host; //IP del servidor con el que me voy a conectar
 	private int puerto;
@@ -26,7 +25,6 @@ public class ClientePDF {
 			System.out.println("Conectado a : "+ sCliente.getRemoteSocketAddress());
 			 //Obtengo una referencia a los flujos de datos de entrada y salida
 			salida=new PrintStream(sCliente.getOutputStream());
-			entrada=new Scanner(sCliente.getInputStream());
 			
 			String pedidoA=pedido.toString();
 			salida.println(pedidoA);
@@ -41,7 +39,6 @@ public class ClientePDF {
 	public void finalizar(){
 		try{
 			salida.close();
-			entrada.close();
 			sCliente.close();
 		}catch(Exception e){
 			e.printStackTrace();

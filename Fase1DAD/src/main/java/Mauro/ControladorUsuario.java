@@ -77,7 +77,7 @@ public class ControladorUsuario {
 
 	@GetMapping("/form_registro")
 	public String mostrarForm(Model model){
-		return "registro_usuario.html";
+		return "registro_usuario";
 	}
 	
 	@PostMapping("/deslogearse")

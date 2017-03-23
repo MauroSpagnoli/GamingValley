@@ -41,7 +41,7 @@ public class UsuarioRepositoryAuthenticationProvider implements AuthenticationPr
 			roles.add(new SimpleGrantedAuthority(rol));
 		}
 		
-		//Devuelve un objeto con sus respectivos roles --> ¿Puede devolver un objeto Usuario?
+		//Devuelve un objeto con sus respectivos roles
 		return new UsernamePasswordAuthenticationToken(usuarioLogeado.getEmail(), password, roles);
 	}
 
