@@ -34,7 +34,7 @@ Nuestra aplicación web se basa en la **venta** de videojuegos y de conocer las 
 - [**Miguel Robledo:**](https://github.com/migueljrd) m.robledod@alumnos.urjc.es
 
 ## Diagrama UML de clases:
-![alt text]
+![alt text](https://github.com/MauroSpagnoli/GamingValley/blob/master/GamingValleyUML.png)
 
 ## Diagrama Entidad/Relacion:
 ![alt text](https://github.com/MauroSpagnoli/GamingValley/blob/master/ermodel.PNG) 
