@@ -55,5 +55,21 @@ Nuestra aplicación web se basa en la **venta** de videojuegos y de conocer las 
 - **Vista Pedido**: Aqui sale el pedido actual, ademas se puede guardar el pedido actual y volver a la pagina principal.
 ![alt text](https://github.com/MauroSpagnoli/GamingValley/blob/master/Vistas/pedidos.PNG)
 
+## Instrucciones para ejecutar la aplicacion en Azure
+- Generamos un certificado pem para poder acceder a la máquina mediante la siguiente instruccion:
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout azureus.key -out azureus-cert.pem
+- Y protegemos la clave:
+chmod 0600 azureus.key
+- Creamos una máquina virtual en Azure, accedemos a ella con un mediante ssh usando la clave privada:
+ssh -i azure.key azureuser@ipdelamaquina
+- Luego instalamos java y mysql.
+- Generamos el jar en nuestra aplicación con la opción mvn build... y en goals introducimos clean package.
+- En carpeta target de nuestro proyecto,se ha creado el jar, y lo subimos mediante el comando scp -i:
+scp -i /path/to/azure.key MVC-o.o.1-SNAPSHOT.jar azureuser@ip:/home/azureuser/
+- Antes de ejecutar la aplicacion hay que abrir el puerto 443.
+- Accedemos a la máquina virtual donde hemos subido el jar y ejecutamos la aplicacion:
+java -jar MVC-o.o.1-SNAPSHOT.jar
+- Con el mismo proceso de antes ejecutamos los servicios internos.
+
 ## Organigrama de navegación:
 ![alt text](https://github.com/MauroSpagnoli/GamingValley/blob/master/organigrama.png)
