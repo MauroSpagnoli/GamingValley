@@ -41,6 +41,7 @@ Nuestra aplicación web se basa en la **venta** de videojuegos y de conocer las 
 
 ## Explicación de las vistas
 - **Vista Principal**: Desde esta pagina se puede logearse en la pagina, acceder a las noticias, ver la tienda y ver el pedido actual. Hay dos tipos de vistas, la vista cuando el usuario no está logeado y cuando el usuario está logeado.
+
 _Vista con usuario no logeado_
 ![alt text](https://github.com/MauroSpagnoli/GamingValley/blob/master/Vistas/inicioPublica.PNG)
 _Vista con usuario logeado_
