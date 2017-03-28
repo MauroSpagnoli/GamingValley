@@ -47,13 +47,13 @@ _Vista con usuario logeado_
 ![alt text](https://github.com/MauroSpagnoli/GamingValley/blob/master/Vistas/inicioPrivada.PNG)
 
 - **Vista Noticia**: Aqui se pueden ver las noticias o agregar una nueva.
-![alt text] (https://github.com/MauroSpagnoli/GamingValley/blob/master/Vistas/noticias.PNG)
+![alt text](https://github.com/MauroSpagnoli/GamingValley/blob/master/Vistas/noticias.PNG)
 
 - **Vista Tienda**: Aqui se pueden ver todos los videojuegos que hay en la tienda, agregar un nuevo videojuego y volver a la pagina principal.
-![alt text] (https://github.com/MauroSpagnoli/GamingValley/blob/master/Vistas/videojuegos.PNG)
+![alt text](https://github.com/MauroSpagnoli/GamingValley/blob/master/Vistas/videojuegos.PNG)
 
 - **Vista Login**: Desde aqui se puede logearse en la pagina o si no se tiene cuenta poder registrarse.
-![alt text] (https://github.com/MauroSpagnoli/GamingValley/blob/master/Vistas/form_login.PNG)
+![alt text](https://github.com/MauroSpagnoli/GamingValley/blob/master/Vistas/form_login.PNG)
 
 - **Vista Pedido**: Aqui sale el pedido actual, ademas se puede guardar el pedido actual y volver a la pagina principal.
 ![alt text](https://github.com/MauroSpagnoli/GamingValley/blob/master/Vistas/pedidos.PNG)
