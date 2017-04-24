@@ -150,14 +150,11 @@ public class ControladorUsuario {
 		return"pedido_eliminado";
 	}
 	
-	@PostMapping("/crearpdf/{id}")
-	public String crearpdf(@PathVariable long id,HttpSession sesion){
+	@PostMapping("/crearpdf")
+	public String crearpdf(HttpSession sesion){
 		Usuario usuarioBuscado = repositorioUsuarios.findByEmail((String) sesion.getAttribute("email"));
-		Pedido pedidoPDF = this.repositorioPedidos.findByIdAndComprador(id, usuarioBuscado);
-		ClientePDF c=new ClientePDF("127.0.0.1", 9991,pedidoPDF);
-		c.iniciar();
-		ClienteEmail e=new ClienteEmail("127.0.0.1",9990,pedidoPDF);
-		e.iniciar();
+		Pedido pedidoPDF = repositorioPedidos.getOne(usuarioBuscado.getNumeroPedidoActual());
+		new Conexion().enviar(usuarioBuscado.getEmail(), "Confirmación de envio","Compra realizada para el pedido actual.");
 		return "PDFcreado";
 	}
 	
