@@ -78,5 +78,9 @@ _Vista con usuario logeado_
 ## Diagrama de la infraestructura en Azure
 ![alt text](https://github.com/MauroSpagnoli/GamingValley/blob/master/infraestructuraAzure.png)
 
+## Documentación interfaz servicio interno
+- En nuestra aplicación existe una clase llamada "Conexión" en la cual se crea una instancia de un REST Template, por el cual realiza un POST hacia la URL _http://<ipPrivadaMV>:8083/crearPdf_ por el cual se envia la direccón email del usuario que hace el pedido y un mensaje.
+- En nuestra API REST ejecutada en la misma maquina se encarga de escuchar del puerto 8083 las peticiones que se realice. Se trata un metodo POST en el cual se envia hacia la dirección de correo del usuario.
+
 ## Organigrama de navegación:
 ![alt text](https://github.com/MauroSpagnoli/GamingValley/blob/master/organigrama.png)
