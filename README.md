@@ -75,5 +75,8 @@ _Vista con usuario logeado_
 **java -jar MVC-o.o.1-SNAPSHOT.jar**
 - Con el mismo proceso de antes ejecutamos los servicios internos.
 
+## Diagrama de la infraestructura en Azure
+![alt text](https://github.com/MauroSpagnoli/GamingValley/blob/master/infraestructuraAzure.png)
+
 ## Organigrama de navegación:
 ![alt text](https://github.com/MauroSpagnoli/GamingValley/blob/master/organigrama.png)
