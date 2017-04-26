@@ -2,6 +2,9 @@
 
 ¡Bienvenidos a la nueva aplicación web de venta de videojuegos **GamingValley**! A pesar de que somos una pequeña compañia, esperamos hacernos un hueco y conseguir un renombre dentro de la industria de la venta de videojuegos.
 
+## Vídeo sobre la página web
+[![Video explicativo Gaming Valley](https://youtu.be/hTnXefp51OE/0.jpg)](https://youtu.be/hTnXefp51OE)
+
 ## Descripción de nuestra aplicación web:
 
 Nuestra aplicación web se basa en la **venta** de videojuegos y de conocer las **últimas noticias** sobre los videojuegos actuales, futuros y los más antiguos tambien.
